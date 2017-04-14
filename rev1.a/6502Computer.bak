@@ -1,0 +1,101 @@
+EESchema Schematic File Version 2
+LIBS:6502Computer-rescue
+LIBS:power
+LIBS:device
+LIBS:transistors
+LIBS:conn
+LIBS:linear
+LIBS:regul
+LIBS:74xx
+LIBS:cmos4000
+LIBS:adc-dac
+LIBS:memory
+LIBS:xilinx
+LIBS:microcontrollers
+LIBS:dsp
+LIBS:microchip
+LIBS:analog_switches
+LIBS:motorola
+LIBS:texas
+LIBS:intel
+LIBS:audio
+LIBS:interface
+LIBS:digital-audio
+LIBS:philips
+LIBS:display
+LIBS:cypress
+LIBS:siliconi
+LIBS:opto
+LIBS:atmel
+LIBS:contrib
+LIBS:valves
+LIBS:6502
+LIBS:6502Bootstrapper-cache
+LIBS:barrel_jack
+LIBS:dips-s
+LIBS:propeller
+LIBS:vga
+LIBS:keyboard_parts
+LIBS:addressdecoder
+LIBS:6502Computer-cache
+EELAYER 25 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 5
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Sheet
+S 1220 1130 2480 1610
+U 56D50E2C
+F0 "page 1" 60
+F1 "page1.sch" 60
+F2 "A[0..15]" B R 3700 1935 60 
+$EndSheet
+$Sheet
+S 3920 1130 2510 1600
+U 56D50EEB
+F0 "page 2" 60
+F1 "page2.sch" 60
+F2 "A[0..15]" B L 3920 1935 60 
+F3 "D[0..7]" I R 6430 1920 60 
+$EndSheet
+$Sheet
+S 6720 1130 2540 1570
+U 56D50F54
+F0 "page 3" 60
+F1 "page3.sch" 60
+F2 "D[0..7]" I L 6720 1920 60 
+$EndSheet
+$Sheet
+S 1230 3060 2490 1550
+U 56D665EF
+F0 "page 4" 60
+F1 "page4.sch" 60
+$EndSheet
+Text Notes 7360 7500 0    60   ~ 0
+6502 COMPUTER
+Text Notes 8170 7650 0    60   ~ 0
+3/22/2016
+Text Notes 10545 7650 0    60   ~ 0
+1.A
+Text Notes 1525 1000 0    60   ~ 0
+POWER SUPPLY, ADDRESS DECODING
+Text Notes 4385 1015 0    60   ~ 0
+CPU/RAM/ROM, RESET, CLOCK
+Text Notes 7145 1030 0    60   ~ 0
+SERIAL, I/O, AUDIO, REAL TIME CLOCK
+Text Notes 1760 2950 0    60   ~ 0
+PROPELLER PERIPHERAL I/O
+Wire Bus Line
+	3700 1935 3920 1935
+Wire Bus Line
+	6430 1920 6720 1920
+$EndSCHEMATC

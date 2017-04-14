@@ -1,0 +1,13 @@
+﻿"Symbol";"Value";"Unit";
+"TraceParts.PartNumber";"10-11022016-096937";"";
+"REFERENCE";"RCJ-014";"";
+"TraceParts.PartTitle";"RCJ-01 Series - 1 Port,  Right Angle, Through Hole, Shielded, RCA Jack Connector";"";
+"TraceParts.InstanceId";"10-11022016-09693765U420MVRU0JBFEOJIS9841B3";"";
+"DESIGN";"Metal Right-Angle, RCA Jack, Yellow Insulator";"";
+"TraceParts.PartStatus";"Published";"";
+"TraceParts.PartStatusId";"";"";
+"SUPPLIER";"CUI";"";
+"TraceParts.PartVersion";"1.0.3";"";
+"TRACEPARTS";"TRACEPARTS";"";
+"TraceParts.PartLanguage";"en";"";
+"TraceParts.ClassPath";"CUI:10-11022016-096937";"";

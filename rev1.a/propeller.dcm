@@ -1,0 +1,19 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP FB
+D Resistor
+K R DEV
+$ENDCMP
+#
+$CMP R
+D Resistor
+K R DEV
+$ENDCMP
+#
+$CMP SD_Card_SPI
+D SD Card Reader
+K CONN SD
+F http://portal.fciconnect.com/Comergent//fci/drawing/10067847.pdf
+$ENDCMP
+#
+#End Doc Library

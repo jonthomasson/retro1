@@ -1,0 +1,13 @@
+﻿"Symbol";"Value";"Unit";
+"TraceParts.PartNumber";"10-11022016-096868";"";
+"REFERENCE";"MD-60SM";"";
+"TraceParts.PartTitle";"MD-XXSM Series - 3~9 Positions, Receptacle, Right Angle, Through Hole, Shielded, Mini Circular DIN Connector";"";
+"TraceParts.InstanceId";"10-11022016-0968688I7LZWI8HJ1ZHB80H6WTHBRL2";"";
+"DESIGN";"6 Pin, Mini Circular Connector w/ Shield";"";
+"TraceParts.PartStatus";"Published";"";
+"TraceParts.PartStatusId";"";"";
+"SUPPLIER";"CUI";"";
+"TraceParts.PartVersion";"1.0.3";"";
+"TRACEPARTS";"TRACEPARTS";"";
+"TraceParts.PartLanguage";"en";"";
+"TraceParts.ClassPath";"CUI:10-11022016-096868";"";

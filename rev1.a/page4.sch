@@ -1,0 +1,1084 @@
+EESchema Schematic File Version 2
+LIBS:6502Computer-rescue
+LIBS:power
+LIBS:device
+LIBS:transistors
+LIBS:conn
+LIBS:linear
+LIBS:regul
+LIBS:74xx
+LIBS:cmos4000
+LIBS:adc-dac
+LIBS:memory
+LIBS:xilinx
+LIBS:microcontrollers
+LIBS:dsp
+LIBS:microchip
+LIBS:analog_switches
+LIBS:motorola
+LIBS:texas
+LIBS:intel
+LIBS:audio
+LIBS:interface
+LIBS:digital-audio
+LIBS:philips
+LIBS:display
+LIBS:cypress
+LIBS:siliconi
+LIBS:opto
+LIBS:atmel
+LIBS:contrib
+LIBS:valves
+LIBS:6502
+LIBS:6502Bootstrapper-cache
+LIBS:barrel_jack
+LIBS:dips-s
+LIBS:propeller
+LIBS:vga
+LIBS:keyboard_parts
+LIBS:addressdecoder
+LIBS:6502Computer-cache
+EELAYER 26 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 5 5
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L 24LC256_EEPROM U18
+U 1 1 56D6694A
+P 7520 1840
+F 0 "U18" H 7470 1490 60  0000 C CNN
+F 1 "24LC256_EEPROM" H 7520 2340 60  0000 C CNN
+F 2 "mod_pth_circuits:dil_8-300_socket" H 7520 1840 60  0001 C CNN
+F 3 "" H 7520 1840 60  0000 C CNN
+	1    7520 1840
+	1    0    0    -1  
+$EndComp
+$Comp
+L VGA J5
+U 1 1 56D66D62
+P 7210 5500
+F 0 "J5" H 6960 6300 60  0000 C CNN
+F 1 "VGA" H 7210 4750 60  0000 C CNN
+F 2 "6502Library:117343442VGA" H 7210 5500 60  0001 C CNN
+F 3 "" H 7210 5500 60  0000 C CNN
+	1    7210 5500
+	1    0    0    -1  
+$EndComp
+$Comp
+L PS2_FEMALE K1
+U 1 1 56D67A23
+P 7540 3300
+F 0 "K1" H 7540 2925 60  0000 C CNN
+F 1 "PS2_KEYBOARD" H 7565 3675 60  0000 C CNN
+F 2 "6502Library:MD60SM" H 7540 3300 60  0001 C CNN
+F 3 "" H 7540 3300 60  0000 C CNN
+	1    7540 3300
+	-1   0    0    1   
+$EndComp
+$Comp
+L Prop_P8X32A U17
+U 1 1 56D8535A
+P 4530 3210
+F 0 "U17" H 4480 1760 60  0000 C CNN
+F 1 "Prop_P8X32A" H 4480 4060 60  0000 C CNN
+F 2 "mod_pth_circuits:dil_40-600_socket" H 4530 3210 60  0001 C CNN
+F 3 "" H 4530 3210 60  0000 C CNN
+	1    4530 3210
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7070 1540 6910 1540
+$Comp
+L GND #PWR0160
+U 1 1 56D9A177
+P 6910 2130
+F 0 "#PWR0160" H 6910 1880 50  0001 C CNN
+F 1 "GND" H 6910 1980 50  0000 C CNN
+F 2 "" H 6910 2130 60  0000 C CNN
+F 3 "" H 6910 2130 60  0000 C CNN
+	1    6910 2130
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7070 1690 6910 1690
+Wire Wire Line
+	6910 1990 7070 1990
+Wire Wire Line
+	7070 1840 6910 1840
+Wire Wire Line
+	8050 2810 8050 1840
+Wire Wire Line
+	8050 1840 7920 1840
+Wire Wire Line
+	4980 2710 7920 2710
+Wire Wire Line
+	7920 2710 7920 1990
+Wire Wire Line
+	7920 1690 8360 1690
+Wire Wire Line
+	8360 1690 8360 1810
+$Comp
+L GND #PWR0161
+U 1 1 56D9A335
+P 8360 1810
+F 0 "#PWR0161" H 8360 1560 50  0001 C CNN
+F 1 "GND" H 8360 1660 50  0000 C CNN
+F 2 "" H 8360 1810 60  0000 C CNN
+F 3 "" H 8360 1810 60  0000 C CNN
+	1    8360 1810
+	1    0    0    -1  
+$EndComp
+$Comp
+L +3.3V #PWR0162
+U 1 1 56D9A358
+P 8390 1380
+F 0 "#PWR0162" H 8390 1230 50  0001 C CNN
+F 1 "+3.3V" H 8390 1520 50  0000 C CNN
+F 2 "" H 8390 1380 60  0000 C CNN
+F 3 "" H 8390 1380 60  0000 C CNN
+	1    8390 1380
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8390 1380 8390 1540
+Wire Wire Line
+	8390 1540 7920 1540
+Connection ~ 6640 2710
+$Comp
+L R R29
+U 1 1 56D9A5EA
+P 6640 2465
+F 0 "R29" V 6720 2465 50  0000 C CNN
+F 1 "10k" V 6640 2465 50  0000 C CNN
+F 2 "6502Library:Resistor_Horizontal_RM10mm" V 6570 2465 30  0001 C CNN
+F 3 "" H 6640 2465 30  0000 C CNN
+	1    6640 2465
+	1    0    0    -1  
+$EndComp
+$Comp
+L Crystal_Small Y4
+U 1 1 56D9AABF
+P 5500 3570
+F 0 "Y4" H 5500 3670 50  0000 C CNN
+F 1 "5MHz 20pf" H 5500 3470 50  0000 C CNN
+F 2 "mod_crystal:crystal_hc-49s" H 5500 3570 60  0001 C CNN
+F 3 "" H 5500 3570 60  0000 C CNN
+	1    5500 3570
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	4980 3510 5350 3510
+Wire Wire Line
+	5350 3510 5350 3430
+Wire Wire Line
+	5350 3430 5500 3430
+Wire Wire Line
+	5500 3430 5500 3470
+Wire Wire Line
+	4980 3610 5360 3610
+Wire Wire Line
+	5360 3610 5360 3700
+Wire Wire Line
+	5360 3700 5500 3700
+Wire Wire Line
+	5500 3700 5500 3670
+$Comp
+L +3.3V #PWR0163
+U 1 1 56D9AF72
+P 5540 3250
+F 0 "#PWR0163" H 5540 3100 50  0001 C CNN
+F 1 "+3.3V" H 5540 3390 50  0000 C CNN
+F 2 "" H 5540 3250 60  0000 C CNN
+F 3 "" H 5540 3250 60  0000 C CNN
+	1    5540 3250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4980 3410 5540 3410
+$Comp
+L GND #PWR0164
+U 1 1 56D9AFC4
+P 5300 3730
+F 0 "#PWR0164" H 5300 3480 50  0001 C CNN
+F 1 "GND" H 5300 3580 50  0000 C CNN
+F 2 "" H 5300 3730 60  0000 C CNN
+F 3 "" H 5300 3730 60  0000 C CNN
+	1    5300 3730
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5300 3730 5300 3710
+Wire Wire Line
+	5300 3710 4980 3710
+$Comp
+L CONN_01X04 P14
+U 1 1 56D9B3B1
+P 4500 1160
+F 0 "P14" H 4500 1410 50  0000 C CNN
+F 1 "PROP_PLUG" V 4600 1160 50  0000 C CNN
+F 2 "6502Library:PROP_PLUG" H 4500 1160 60  0001 C CNN
+F 3 "" H 4500 1160 60  0000 C CNN
+	1    4500 1160
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	4980 2510 5050 2510
+Wire Wire Line
+	5050 2510 5050 1700
+Wire Wire Line
+	5050 1700 4550 1700
+Wire Wire Line
+	4550 1700 4550 1360
+Wire Wire Line
+	4650 1360 4650 1640
+Wire Wire Line
+	4650 1640 5110 1640
+Wire Wire Line
+	5110 1640 5110 2610
+Wire Wire Line
+	5110 2610 4980 2610
+Wire Wire Line
+	3880 1455 3880 3610
+Wire Wire Line
+	3880 1680 4450 1680
+Wire Wire Line
+	4450 1680 4450 1360
+Wire Wire Line
+	4350 1620 4350 1360
+Wire Wire Line
+	3805 1620 4350 1620
+Wire Wire Line
+	3805 3410 4030 3410
+$Comp
+L GND #PWR0165
+U 1 1 56D9B97C
+P 3660 3400
+F 0 "#PWR0165" H 3660 3150 50  0001 C CNN
+F 1 "GND" H 3660 3250 50  0000 C CNN
+F 2 "" H 3660 3400 60  0000 C CNN
+F 3 "" H 3660 3400 60  0000 C CNN
+	1    3660 3400
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	3660 3400 3660 3510
+$Comp
+L +3.3V #PWR0166
+U 1 1 56D9B9E9
+P 3660 3710
+F 0 "#PWR0166" H 3660 3560 50  0001 C CNN
+F 1 "+3.3V" H 3660 3850 50  0000 C CNN
+F 2 "" H 3660 3710 60  0000 C CNN
+F 3 "" H 3660 3710 60  0000 C CNN
+	1    3660 3710
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	3660 3710 4030 3710
+Wire Wire Line
+	3880 3610 4030 3610
+Wire Wire Line
+	6600 2960 6600 3570
+Wire Wire Line
+	6600 3450 6740 3450
+Wire Wire Line
+	6710 2920 6710 3150
+Wire Wire Line
+	6710 3150 6740 3150
+Wire Wire Line
+	6490 3360 6490 3350
+Wire Wire Line
+	6490 3350 6740 3350
+$Comp
+L GND #PWR0167
+U 1 1 56D9C570
+P 6370 3290
+F 0 "#PWR0167" H 6370 3040 50  0001 C CNN
+F 1 "GND" H 6370 3140 50  0000 C CNN
+F 2 "" H 6370 3290 60  0000 C CNN
+F 3 "" H 6370 3290 60  0000 C CNN
+	1    6370 3290
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6370 3290 6370 3250
+Wire Wire Line
+	6370 3250 6740 3250
+Wire Wire Line
+	7810 5250 8040 5250
+Wire Wire Line
+	8040 5250 8040 4580
+Wire Wire Line
+	8040 4580 6010 4580
+$Comp
+L R R18
+U 1 1 56D9CA26
+P 5860 4580
+F 0 "R18" V 5940 4580 50  0000 C CNN
+F 1 "240" V 5860 4580 50  0000 C CNN
+F 2 "6502Library:Resistor_Horizontal_RM10mm" V 5790 4580 30  0001 C CNN
+F 3 "" H 5860 4580 30  0000 C CNN
+	1    5860 4580
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	5710 4580 5040 4580
+Wire Wire Line
+	5040 4580 5040 4560
+Wire Wire Line
+	5040 4560 4980 4560
+Wire Wire Line
+	7810 5450 8140 5450
+Wire Wire Line
+	8140 5450 8140 4420
+Wire Wire Line
+	8140 4420 6010 4420
+$Comp
+L R R17
+U 1 1 56D9D386
+P 5860 4420
+F 0 "R17" V 5940 4420 50  0000 C CNN
+F 1 "240" V 5860 4420 50  0000 C CNN
+F 2 "6502Library:Resistor_Horizontal_RM10mm" V 5790 4420 30  0001 C CNN
+F 3 "" H 5860 4420 30  0000 C CNN
+	1    5860 4420
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	4980 4460 5710 4460
+Wire Wire Line
+	5710 4460 5710 4420
+$Comp
+L R R26
+U 1 1 56D9D9EF
+P 5880 5540
+F 0 "R26" V 5960 5540 50  0000 C CNN
+F 1 "470" V 5880 5540 50  0000 C CNN
+F 2 "6502Library:Resistor_Horizontal_RM10mm" V 5810 5540 30  0001 C CNN
+F 3 "" H 5880 5540 30  0000 C CNN
+	1    5880 5540
+	0    1    1    0   
+$EndComp
+$Comp
+L R R25
+U 1 1 56D9DACF
+P 5880 5380
+F 0 "R25" V 5960 5380 50  0000 C CNN
+F 1 "240" V 5880 5380 50  0000 C CNN
+F 2 "6502Library:Resistor_Horizontal_RM10mm" V 5810 5380 30  0001 C CNN
+F 3 "" H 5880 5380 30  0000 C CNN
+	1    5880 5380
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6610 5450 6030 5450
+Wire Wire Line
+	6030 5380 6030 5540
+Connection ~ 6030 5450
+Wire Wire Line
+	4980 4360 5510 4360
+Wire Wire Line
+	5510 4360 5510 5540
+Wire Wire Line
+	5510 5540 5730 5540
+Wire Wire Line
+	4980 4260 5640 4260
+Wire Wire Line
+	5640 4260 5640 5380
+Wire Wire Line
+	5640 5380 5730 5380
+$Comp
+L R R21
+U 1 1 56D9E7D5
+P 5870 5710
+F 0 "R21" V 5950 5710 50  0000 C CNN
+F 1 "240" V 5870 5710 50  0000 C CNN
+F 2 "6502Library:Resistor_Horizontal_RM10mm" V 5800 5710 30  0001 C CNN
+F 3 "" H 5870 5710 30  0000 C CNN
+	1    5870 5710
+	0    1    1    0   
+$EndComp
+$Comp
+L R R22
+U 1 1 56D9E858
+P 5870 5870
+F 0 "R22" V 5950 5870 50  0000 C CNN
+F 1 "470" V 5870 5870 50  0000 C CNN
+F 2 "6502Library:Resistor_Horizontal_RM10mm" V 5800 5870 30  0001 C CNN
+F 3 "" H 5870 5870 30  0000 C CNN
+	1    5870 5870
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6020 5870 6020 5710
+Wire Wire Line
+	6020 5790 6140 5790
+Wire Wire Line
+	6140 5790 6140 5650
+Wire Wire Line
+	6140 5650 6610 5650
+Connection ~ 6020 5790
+$Comp
+L R R23
+U 1 1 56D9EDC0
+P 5870 6040
+F 0 "R23" V 5950 6040 50  0000 C CNN
+F 1 "240" V 5870 6040 50  0000 C CNN
+F 2 "6502Library:Resistor_Horizontal_RM10mm" V 5800 6040 30  0001 C CNN
+F 3 "" H 5870 6040 30  0000 C CNN
+	1    5870 6040
+	0    1    1    0   
+$EndComp
+$Comp
+L R R24
+U 1 1 56D9EE2A
+P 5870 6200
+F 0 "R24" V 5950 6200 50  0000 C CNN
+F 1 "470" V 5870 6200 50  0000 C CNN
+F 2 "6502Library:Resistor_Horizontal_RM10mm" V 5800 6200 30  0001 C CNN
+F 3 "" H 5870 6200 30  0000 C CNN
+	1    5870 6200
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6020 6200 6020 6040
+Wire Wire Line
+	6020 6120 6140 6120
+Wire Wire Line
+	6140 6120 6140 5850
+Wire Wire Line
+	6140 5850 6610 5850
+Connection ~ 6020 6120
+$Comp
+L GND #PWR0168
+U 1 1 56D9F416
+P 6520 6130
+F 0 "#PWR0168" H 6520 5880 50  0001 C CNN
+F 1 "GND" H 6520 5980 50  0000 C CNN
+F 2 "" H 6520 6130 60  0000 C CNN
+F 3 "" H 6520 6130 60  0000 C CNN
+	1    6520 6130
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6520 5050 6520 6130
+Wire Wire Line
+	6520 5950 6610 5950
+Wire Wire Line
+	6610 5050 6520 5050
+Connection ~ 6520 5950
+Wire Wire Line
+	6610 5750 6520 5750
+Connection ~ 6520 5750
+Wire Wire Line
+	6610 5550 6520 5550
+Connection ~ 6520 5550
+Wire Wire Line
+	6610 5150 6520 5150
+Connection ~ 6520 5150
+Wire Wire Line
+	6410 5300 6410 5350
+Wire Wire Line
+	6410 5350 6610 5350
+Wire Wire Line
+	4980 4060 5450 4060
+Wire Wire Line
+	5450 4060 5450 5710
+Wire Wire Line
+	5450 5710 5720 5710
+Wire Wire Line
+	4980 4160 5410 4160
+Wire Wire Line
+	5410 4160 5410 5870
+Wire Wire Line
+	5410 5870 5720 5870
+Wire Wire Line
+	5380 6040 5720 6040
+Wire Wire Line
+	5380 6040 5380 3860
+Wire Wire Line
+	5380 3860 4980 3860
+Wire Wire Line
+	5720 6200 5350 6200
+Wire Wire Line
+	5350 6200 5350 3960
+Wire Wire Line
+	5350 3960 4980 3960
+$Comp
+L R R28
+U 1 1 56DA1233
+P 6600 3720
+F 0 "R28" V 6680 3720 50  0000 C CNN
+F 1 "10K" V 6600 3720 50  0000 C CNN
+F 2 "6502Library:Resistor_Horizontal_RM10mm" V 6530 3720 30  0001 C CNN
+F 3 "" H 6600 3720 30  0000 C CNN
+	1    6600 3720
+	1    0    0    -1  
+$EndComp
+Connection ~ 6600 3450
+Wire Wire Line
+	6600 3980 6600 3870
+$Comp
+L R R19
+U 1 1 56DA1AF9
+P 5870 2960
+F 0 "R19" V 5790 2950 50  0000 C CNN
+F 1 "100" V 5870 2960 50  0000 C CNN
+F 2 "6502Library:Resistor_Horizontal_RM10mm" V 5800 2960 30  0001 C CNN
+F 3 "" H 5870 2960 30  0000 C CNN
+	1    5870 2960
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6600 2960 6020 2960
+Wire Wire Line
+	5720 2960 4980 2960
+$Comp
+L R R20
+U 1 1 56DA203A
+P 5870 3060
+F 0 "R20" V 5950 3060 50  0000 C CNN
+F 1 "100" V 5870 3060 50  0000 C CNN
+F 2 "6502Library:Resistor_Horizontal_RM10mm" V 5800 3060 30  0001 C CNN
+F 3 "" H 5870 3060 30  0000 C CNN
+	1    5870 3060
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	5720 3060 4980 3060
+Wire Wire Line
+	6710 3060 6020 3060
+$Comp
+L R R30
+U 1 1 56DA24F7
+P 6920 2920
+F 0 "R30" V 7000 2920 50  0000 C CNN
+F 1 "10K" V 6920 2920 50  0000 C CNN
+F 2 "6502Library:Resistor_Horizontal_RM10mm" V 6850 2920 30  0001 C CNN
+F 3 "" H 6920 2920 30  0000 C CNN
+	1    6920 2920
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	7150 2920 7070 2920
+Wire Wire Line
+	6770 2920 6710 2920
+Connection ~ 6710 3060
+Text Notes 1480 7170 0    197  ~ 39
+PROPELLER PERIPHERAL I/O
+$Comp
+L SD_Card_SPI CON1
+U 1 1 56DC7BDC
+P 1800 2100
+F 0 "CON1" H 1150 2650 50  0000 C CNN
+F 1 "SD_Card_SPI" H 2400 1550 50  0000 C CNN
+F 2 "6502Library:DM1AASFPEJ_SDCARD" H 2000 2450 50  0001 C CNN
+F 3 "" H 1800 2100 60  0000 C CNN
+	1    1800 2100
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	3590 1800 3590 2510
+Wire Wire Line
+	3590 1800 2700 1800
+Wire Wire Line
+	3590 2510 4030 2510
+Wire Wire Line
+	4030 2610 3500 2610
+Wire Wire Line
+	3500 2610 3500 2000
+Wire Wire Line
+	3500 2000 2700 2000
+Wire Wire Line
+	4030 2710 3400 2710
+Wire Wire Line
+	3400 2710 3400 2300
+Wire Wire Line
+	3400 2300 2700 2300
+Wire Wire Line
+	4030 2810 3300 2810
+Wire Wire Line
+	3300 2810 3300 2400
+Wire Wire Line
+	3300 2400 2700 2400
+$Comp
+L GND #PWR0169
+U 1 1 56DC85E4
+P 2740 1900
+F 0 "#PWR0169" H 2740 1650 50  0001 C CNN
+F 1 "GND" H 2740 1750 50  0000 C CNN
+F 2 "" H 2740 1900 60  0000 C CNN
+F 3 "" H 2740 1900 60  0000 C CNN
+	1    2740 1900
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	2740 1900 2700 1900
+$Comp
+L GND #PWR0170
+U 1 1 56DC86D6
+P 2750 2200
+F 0 "#PWR0170" H 2750 1950 50  0001 C CNN
+F 1 "GND" H 2750 2050 50  0000 C CNN
+F 2 "" H 2750 2200 60  0000 C CNN
+F 3 "" H 2750 2200 60  0000 C CNN
+	1    2750 2200
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	2750 2200 2700 2200
+$Comp
+L +3.3V #PWR0171
+U 1 1 56DC87C9
+P 3240 2120
+F 0 "#PWR0171" H 3240 1970 50  0001 C CNN
+F 1 "+3.3V" H 3240 2260 50  0000 C CNN
+F 2 "" H 3240 2120 60  0000 C CNN
+F 3 "" H 3240 2120 60  0000 C CNN
+	1    3240 2120
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	2880 2100 2700 2100
+Text GLabel 4980 3160 2    60   Input ~ 0
+ACIA1_TX
+Text GLabel 4980 3260 2    60   Input ~ 0
+ACIA1_RX
+$Comp
+L CONN_01X12 P13
+U 1 1 56E07EB2
+P 2450 4010
+F 0 "P13" H 2450 4660 50  0000 C CNN
+F 1 "CONN_01X12" V 2550 4010 50  0000 C CNN
+F 2 "6502Library:Socket_Strip_Straight_1x12" H 2450 4010 60  0001 C CNN
+F 3 "" H 2450 4010 60  0000 C CNN
+	1    2450 4010
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	2650 4560 4030 4560
+Wire Wire Line
+	4030 4460 2650 4460
+Wire Wire Line
+	2650 4360 4030 4360
+Wire Wire Line
+	4030 4260 2650 4260
+Wire Wire Line
+	2650 4160 4030 4160
+Wire Wire Line
+	4030 4060 2650 4060
+Wire Wire Line
+	2650 3960 4030 3960
+Wire Wire Line
+	4030 3860 2650 3860
+Wire Wire Line
+	4030 3260 3450 3260
+Wire Wire Line
+	3450 3260 3450 3760
+Wire Wire Line
+	3450 3760 2650 3760
+Wire Wire Line
+	4030 3160 3340 3160
+Wire Wire Line
+	3340 3160 3340 3660
+Wire Wire Line
+	3340 3660 2650 3660
+Wire Wire Line
+	4030 3060 3220 3060
+Wire Wire Line
+	3220 3060 3220 3560
+Wire Wire Line
+	3220 3560 2650 3560
+Wire Wire Line
+	3090 2960 3090 3460
+Wire Wire Line
+	3090 3460 2650 3460
+$Comp
+L C_Small C41
+U 1 1 56E39A3D
+P 3660 3610
+F 0 "C41" H 3540 3665 50  0000 L CNN
+F 1 ".1uf" H 3660 3545 50  0000 L CNN
+F 2 "6502Library:C_Disc_D3_P2.5" H 3660 3610 60  0001 C CNN
+F 3 "" H 3660 3610 60  0000 C CNN
+	1    3660 3610
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR0172
+U 1 1 56E3AD99
+P 5740 3250
+F 0 "#PWR0172" H 5740 3000 50  0001 C CNN
+F 1 "GND" H 5740 3100 50  0000 C CNN
+F 2 "" H 5740 3250 60  0000 C CNN
+F 3 "" H 5740 3250 60  0000 C CNN
+	1    5740 3250
+	0    -1   -1   0   
+$EndComp
+$Comp
+L C_Small C42
+U 1 1 56E3ADD9
+P 5640 3250
+F 0 "C42" H 5650 3320 50  0000 L CNN
+F 1 ".1uf" V 5550 3240 50  0000 L CNN
+F 2 "6502Library:C_Disc_D3_P2.5" H 5640 3250 60  0001 C CNN
+F 3 "" H 5640 3250 60  0000 C CNN
+	1    5640 3250
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	5540 3410 5540 3250
+$Comp
+L +3.3V #PWR0173
+U 1 1 56E3EB78
+P 6640 2265
+F 0 "#PWR0173" H 6640 2115 50  0001 C CNN
+F 1 "+3.3V" H 6640 2405 50  0000 C CNN
+F 2 "" H 6640 2265 60  0000 C CNN
+F 3 "" H 6640 2265 60  0000 C CNN
+	1    6640 2265
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6640 2265 6640 2315
+Wire Wire Line
+	6640 2615 6640 2710
+$Comp
+L C_Small C43
+U 1 1 56E418A5
+P 8490 1540
+F 0 "C43" H 8500 1610 50  0000 L CNN
+F 1 "1uf" H 8500 1460 50  0000 L CNN
+F 2 "6502Library:C_Disc_D6_P5" H 8490 1540 60  0001 C CNN
+F 3 "" H 8490 1540 60  0000 C CNN
+	1    8490 1540
+	0    1    1    0   
+$EndComp
+$Comp
+L GND #PWR0174
+U 1 1 56E41C6F
+P 8590 1540
+F 0 "#PWR0174" H 8590 1290 50  0001 C CNN
+F 1 "GND" H 8590 1390 50  0000 C CNN
+F 2 "" H 8590 1540 60  0000 C CNN
+F 3 "" H 8590 1540 60  0000 C CNN
+	1    8590 1540
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	4980 2810 8050 2810
+$Comp
+L R R27
+U 1 1 56E42757
+P 6385 2465
+F 0 "R27" V 6465 2465 50  0000 C CNN
+F 1 "10k" V 6385 2465 50  0000 C CNN
+F 2 "6502Library:Resistor_Horizontal_RM10mm" V 6315 2465 30  0001 C CNN
+F 3 "" H 6385 2465 30  0000 C CNN
+	1    6385 2465
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6385 2615 6385 2810
+Connection ~ 6385 2810
+$Comp
+L +3.3V #PWR0175
+U 1 1 56E42BB7
+P 6385 2265
+F 0 "#PWR0175" H 6385 2115 50  0001 C CNN
+F 1 "+3.3V" H 6385 2405 50  0000 C CNN
+F 2 "" H 6385 2265 60  0000 C CNN
+F 3 "" H 6385 2265 60  0000 C CNN
+	1    6385 2265
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6385 2265 6385 2315
+Connection ~ 3880 1680
+$Comp
+L GND #PWR0176
+U 1 1 56E445D6
+P 3280 1455
+F 0 "#PWR0176" H 3280 1205 50  0001 C CNN
+F 1 "GND" H 3280 1305 50  0000 C CNN
+F 2 "" H 3280 1455 60  0000 C CNN
+F 3 "" H 3280 1455 60  0000 C CNN
+	1    3280 1455
+	0    1    1    0   
+$EndComp
+$Comp
+L R R16
+U 1 1 56E4461E
+P 3880 1305
+F 0 "R16" V 3960 1305 50  0000 C CNN
+F 1 "10k" V 3880 1305 50  0000 C CNN
+F 2 "6502Library:Resistor_Horizontal_RM10mm" V 3810 1305 30  0001 C CNN
+F 3 "" H 3880 1305 30  0000 C CNN
+	1    3880 1305
+	1    0    0    -1  
+$EndComp
+$Comp
+L +3.3V #PWR0177
+U 1 1 56E44681
+P 3880 1155
+F 0 "#PWR0177" H 3880 1005 50  0001 C CNN
+F 1 "+3.3V" H 3880 1295 50  0000 C CNN
+F 2 "" H 3880 1155 60  0000 C CNN
+F 3 "" H 3880 1155 60  0000 C CNN
+	1    3880 1155
+	1    0    0    -1  
+$EndComp
+Text Notes 485  1035 0    60   ~ 0
+Note: I chose to tie BOEn (Brown Out Enable) high instead of low\n on the propeller to disable the brown out functionality. I did this since\n I wanted the use of a reset button, and I didn't want to worry about\n interference from the SID chip causing wonky reset behavior with\n the propeller. Since BOEn is tied high, I needed to add a 10k pullup\n resistor to the reset line. See propeller datasheet for more details.
+$Comp
+L +3.3V #PWR0178
+U 1 1 56E477BF
+P 3905 3510
+F 0 "#PWR0178" H 3905 3360 50  0001 C CNN
+F 1 "+3.3V" H 3905 3650 50  0000 C CNN
+F 2 "" H 3905 3510 60  0000 C CNN
+F 3 "" H 3905 3510 60  0000 C CNN
+	1    3905 3510
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	3905 3510 4030 3510
+Wire Wire Line
+	3805 3410 3805 1620
+$Comp
+L GND #PWR0179
+U 1 1 56E49A81
+P 3805 1620
+F 0 "#PWR0179" H 3805 1370 50  0001 C CNN
+F 1 "GND" H 3805 1470 50  0000 C CNN
+F 2 "" H 3805 1620 60  0000 C CNN
+F 3 "" H 3805 1620 60  0000 C CNN
+	1    3805 1620
+	0    1    1    0   
+$EndComp
+$Comp
+L TV_OUT J4
+U 1 1 56E3D9FF
+P 2375 6265
+F 0 "J4" H 2380 6045 60  0000 C CNN
+F 1 "TV_OUT" H 2375 6490 60  0000 C CNN
+F 2 "6502Library:RCJ014VIDEO" H 2375 6265 60  0001 C CNN
+F 3 "" H 2375 6265 60  0000 C CNN
+	1    2375 6265
+	1    0    0    1   
+$EndComp
+$Comp
+L R R13
+U 1 1 56E3F87E
+P 2810 5810
+F 0 "R13" V 2890 5810 50  0000 C CNN
+F 1 "1.1k" V 2810 5810 50  0000 C CNN
+F 2 "6502Library:Resistor_Horizontal_RM10mm" V 2740 5810 30  0001 C CNN
+F 3 "" H 2810 5810 30  0000 C CNN
+	1    2810 5810
+	-1   0    0    -1  
+$EndComp
+$Comp
+L R R14
+U 1 1 56E411C3
+P 2960 5810
+F 0 "R14" V 3040 5810 50  0000 C CNN
+F 1 "560" V 2960 5810 50  0000 C CNN
+F 2 "6502Library:Resistor_Horizontal_RM10mm" V 2890 5810 30  0001 C CNN
+F 3 "" H 2960 5810 30  0000 C CNN
+	1    2960 5810
+	-1   0    0    -1  
+$EndComp
+$Comp
+L R R15
+U 1 1 56E41F6D
+P 3110 5810
+F 0 "R15" V 3190 5810 50  0000 C CNN
+F 1 "270" V 3110 5810 50  0000 C CNN
+F 2 "6502Library:Resistor_Horizontal_RM10mm" V 3040 5810 30  0001 C CNN
+F 3 "" H 3110 5810 30  0000 C CNN
+	1    3110 5810
+	-1   0    0    -1  
+$EndComp
+$Comp
+L GND #PWR0180
+U 1 1 56E42748
+P 2575 6090
+F 0 "#PWR0180" H 2575 5840 50  0001 C CNN
+F 1 "GND" H 2575 5940 50  0000 C CNN
+F 2 "" H 2575 6090 60  0000 C CNN
+F 3 "" H 2575 6090 60  0000 C CNN
+	1    2575 6090
+	1    0    0    1   
+$EndComp
+Wire Wire Line
+	2810 5495 2810 5660
+Wire Wire Line
+	2960 5495 2960 5660
+Wire Wire Line
+	3110 5495 3110 5660
+$Comp
+L +5V #PWR0181
+U 1 1 56E93040
+P 6410 5300
+F 0 "#PWR0181" H 6410 5150 50  0001 C CNN
+F 1 "+5V" H 6410 5440 50  0000 C CNN
+F 2 "" H 6410 5300 60  0000 C CNN
+F 3 "" H 6410 5300 60  0000 C CNN
+	1    6410 5300
+	1    0    0    -1  
+$EndComp
+$Comp
+L +5V #PWR0182
+U 1 1 56E93328
+P 6600 3980
+F 0 "#PWR0182" H 6600 3830 50  0001 C CNN
+F 1 "+5V" H 6600 4120 50  0000 C CNN
+F 2 "" H 6600 3980 60  0000 C CNN
+F 3 "" H 6600 3980 60  0000 C CNN
+	1    6600 3980
+	-1   0    0    1   
+$EndComp
+$Comp
+L +5V #PWR0183
+U 1 1 56E93477
+P 6490 3360
+F 0 "#PWR0183" H 6490 3210 50  0001 C CNN
+F 1 "+5V" H 6490 3500 50  0000 C CNN
+F 2 "" H 6490 3360 60  0000 C CNN
+F 3 "" H 6490 3360 60  0000 C CNN
+	1    6490 3360
+	-1   0    0    1   
+$EndComp
+$Comp
+L +5V #PWR0184
+U 1 1 56E93AF3
+P 7150 2920
+F 0 "#PWR0184" H 7150 2770 50  0001 C CNN
+F 1 "+5V" H 7150 3060 50  0000 C CNN
+F 2 "" H 7150 2920 60  0000 C CNN
+F 3 "" H 7150 2920 60  0000 C CNN
+	1    7150 2920
+	0    1    1    0   
+$EndComp
+Text Notes 5435 3965 0    39   ~ 0
+No load caps needed on the crystal\nsince the propeller has selectable\ninternal load capacitors.
+Text Notes 6790 2540 0    39   ~ 0
+Pull up resistor on SCL isn't needed\nbut it's standard practice and allows\nfor other I2C devices to be used.
+Text Notes 3930 1915 0    39   ~ 0
+Pull up resistor on reset to keep\nprop from reseting when prop\nplug is removed.
+Text Notes 7360 7510 0    60   ~ 0
+PROPELLER PERIPHERAL I/O
+Text Notes 8170 7650 0    60   ~ 0
+3/22/2016
+Text Notes 10570 7640 0    60   ~ 0
+1.A
+$Comp
+L C_Small C40
+U 1 1 56F3C5ED
+P 3070 2145
+F 0 "C40" H 3080 2215 50  0000 L CNN
+F 1 ".1uf" H 2920 2070 50  0000 L CNN
+F 2 "6502Library:C_Disc_D3_P2.5" H 3070 2145 60  0001 C CNN
+F 3 "" H 3070 2145 60  0000 C CNN
+	1    3070 2145
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR0185
+U 1 1 56F3C8A1
+P 3070 2245
+F 0 "#PWR0185" H 3070 1995 50  0001 C CNN
+F 1 "GND" H 3070 2095 50  0000 C CNN
+F 2 "" H 3070 2245 60  0000 C CNN
+F 3 "" H 3070 2245 60  0000 C CNN
+	1    3070 2245
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	2880 2045 3240 2045
+Wire Wire Line
+	2880 2045 2880 2100
+Wire Wire Line
+	3240 2045 3240 2120
+Connection ~ 3070 2045
+Text GLabel 3260 5495 3    60   Input ~ 0
+ACIA2_TX
+Text GLabel 3410 5495 3    60   Input ~ 0
+ACIA2_RX
+Wire Wire Line
+	6910 1540 6910 2130
+Connection ~ 6910 1840
+Connection ~ 6910 1990
+$Comp
+L PROP_JUMPERS JP9
+U 1 1 570B67CB
+P 2985 5095
+F 0 "JP9" H 2960 4645 60  0000 C CNN
+F 1 "PROP_JUMPERS" H 3010 5595 60  0000 C CNN
+F 2 "6502Library:Pin_Header_Straight_2x06" H 3160 4970 60  0001 C CNN
+F 3 "" H 3160 4970 60  0000 C CNN
+	1    2985 5095
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	2810 3660 2810 4695
+Connection ~ 2810 3660
+Wire Wire Line
+	2960 4695 2960 3760
+Connection ~ 2960 3760
+Wire Wire Line
+	3110 4695 3110 3860
+Connection ~ 3110 3860
+Wire Wire Line
+	3260 4695 3260 3960
+Connection ~ 3260 3960
+Wire Wire Line
+	3410 4695 3410 4060
+Connection ~ 3410 4060
+Wire Wire Line
+	2810 5960 2810 6265
+Wire Wire Line
+	2575 6265 3110 6265
+Wire Wire Line
+	2960 6265 2960 5960
+Connection ~ 2810 6265
+Wire Wire Line
+	3110 6265 3110 5960
+Connection ~ 2960 6265
+Connection ~ 6910 1690
+NoConn ~ 6610 5250
+NoConn ~ 7810 5050
+NoConn ~ 7810 5650
+NoConn ~ 7810 5850
+NoConn ~ 2700 2500
+NoConn ~ 2700 1700
+Text GLabel 2660 5495 3    60   Input ~ 0
+RES
+Wire Wire Line
+	3090 2960 4030 2960
+Wire Wire Line
+	2660 4695 2660 3460
+Connection ~ 2660 3460
+$Comp
+L SW_PUSH_SAFE SW3
+U 1 1 571FDFD2
+P 3580 1455
+F 0 "SW3" H 3730 1565 50  0000 C CNN
+F 1 "SW_PUSH_SAFE" H 3580 1375 50  0000 C CNN
+F 2 "6502Library:1-1825027-1-TACTILE_SWITCH" H 3580 1455 60  0001 C CNN
+F 3 "" H 3580 1455 60  0000 C CNN
+	1    3580 1455
+	1    0    0    -1  
+$EndComp
+$EndSCHEMATC
