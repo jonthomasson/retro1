@@ -1,0 +1,155 @@
+ca65 V2.15 - Git a85ac88
+Main file   : firmware.s65
+Current file: firmware.s65
+
+000000r 1                         .setcpu "65C02"
+000000r 1               
+000000r 1                          VIA1_DDRB = $8022
+000000r 1                         VIA1_ORB  = $8020
+000000r 1                         VIA1_DDRA = $8023
+000000r 1                         VIA1_ORA  = $8021
+000000r 1                         VIA2_DDRB = $8122
+000000r 1                         VIA2_ORB  = $8120
+000000r 1                         VIA2_DDRA = $8123
+000000r 1                         VIA2_ORA  = $8121
+000000r 1               
+000000r 1                         .segment "VECTORS"
+000000r 1               
+000000r 1  rr rr                  .word   nmi
+000002r 1  rr rr                  .word   reset
+000004r 1  rr rr                  .word   irq
+000006r 1               
+000006r 1                         .code
+000000r 1               
+000000r 1  4C rr rr     reset:    jmp main
+000003r 1               
+000003r 1  40           nmi:      rti
+000004r 1               
+000004r 1  40           irq:      rti
+000005r 1               main:
+000005r 1  A9 FF                  lda #$ff
+000007r 1  8D 22 80               sta VIA1_DDRB
+00000Ar 1  8D 22 81               sta VIA2_DDRB
+00000Dr 1               
+00000Dr 1               ;WRTDATA: Fill fifteen memory locations with unique, incremental
+00000Dr 1               ;values, where each address uses a unique address line.
+00000Dr 1  A2 0F        WRTDATA:  LDX #$0F
+00000Fr 1  8E 00 40               STX $4000     ;$4000 = #$0F  (for test of A14)
+000012r 1  CA                     DEX
+000013r 1  8E 00 20               STX $2000     ;$2000 = #$0E  (for test of A13)
+000016r 1  CA                     DEX
+000017r 1  8E 00 10               STX $1000     ;$1000 = #$0D  (for test of A12)
+00001Ar 1  CA                     DEX
+00001Br 1  8E 00 08               STX $0800     ;$0800 = #$0C  (for test of A11)
+00001Er 1  CA                     DEX
+00001Fr 1  8E 00 04               STX $0400     ;$0400 = #$0B  (for test of A10)
+000022r 1  CA                     DEX
+000023r 1  8E 00 02               STX $0200     ;$0200 = #$0A  (for test of A9)
+000026r 1  CA                     DEX
+000027r 1  8E 00 01               STX $0100     ;$0100 = #$09  (for test of A8)
+00002Ar 1  CA                     DEX
+00002Br 1  86 80                  STX $0080     ;$0080 = #$08  (for test of A7)
+00002Dr 1  CA                     DEX
+00002Er 1  86 40                  STX $0040     ;$0040 = #$07  (for test of A6)
+000030r 1  CA                     DEX
+000031r 1  86 20                  STX $0020     ;$0020 = #$06  (for test of A5)
+000033r 1  CA                     DEX
+000034r 1  86 10                  STX $0010     ;$0010 = #$05  (for test of A4)
+000036r 1  CA                     DEX
+000037r 1  86 08                  STX $0008     ;$0008 = #$04  (for test of A3)
+000039r 1  CA                     DEX
+00003Ar 1  86 04                  STX $0004     ;$0004 = #$03  (for test of A2)
+00003Cr 1  CA                     DEX
+00003Dr 1  86 02                  STX $0002     ;$0002 = #$02  (for test of A1)
+00003Fr 1  CA                     DEX
+000040r 1  86 01                  STX $0001     ;$0001 = #$01  (for test of A0)
+000042r 1               
+000042r 1               ;RAMTEST1: Check address lines A0-A7.
+000042r 1               ;Routine is broken into RAMTEST1 and RAMTEST2 due to the limited range
+000042r 1               ;of the relative branch instruction BNE.
+000042r 1  E4 01        RAMTEST1: CPX $0001
+000044r 1  D0 26                  BNE FOUNDBAD  ;A0 bad (not = #$01)?
+000046r 1  E8                     INX
+000047r 1  E4 02                  CPX $0002
+000049r 1  D0 21                  BNE FOUNDBAD  ;A1 bad (not = #$02)?
+00004Br 1  E8                     INX
+00004Cr 1  E4 04                  CPX $0004
+00004Er 1  D0 1C                  BNE FOUNDBAD  ;A2 bad (not = #$03)?
+000050r 1  E8                     INX
+000051r 1  E4 08                  CPX $0008
+000053r 1  D0 17                  BNE FOUNDBAD  ;A3 bad (not = #$04)?
+000055r 1  E8                     INX
+000056r 1  E4 10                  CPX $0010
+000058r 1  D0 12                  BNE FOUNDBAD  ;A4 bad (not = #$05)?
+00005Ar 1  E8                     INX
+00005Br 1  E4 20                  CPX $0020
+00005Dr 1  D0 0D                  BNE FOUNDBAD  ;A5 bad (not = #$06)?
+00005Fr 1  E8                     INX
+000060r 1  E4 40                  CPX $0040
+000062r 1  D0 08                  BNE FOUNDBAD  ;A6 bad (not = #$07)?
+000064r 1  E8                     INX
+000065r 1  E4 80                  CPX $0080     ;A7 bad (not = #$08)?
+000067r 1  D0 03                  BNE FOUNDBAD
+000069r 1  4C rr rr               JMP RAMTEST2
+00006Cr 1               
+00006Cr 1               ;FOUNDBAD: Called by either RAMTEST1 or RAMTEST2 if
+00006Cr 1               ;an error was detected.  This is the jump to the error handler.
+00006Cr 1  4C rr rr     FOUNDBAD: JMP FAILURE
+00006Fr 1               
+00006Fr 1               ;RAMTEST2: Tests address lines A8-A14
+00006Fr 1  E8           RAMTEST2: INX
+000070r 1  EC 00 01               CPX $0100
+000073r 1  D0 F7                  BNE FOUNDBAD  ;A8 bad (not = #$09)?
+000075r 1  E8                     INX
+000076r 1  EC 00 02               CPX $0200
+000079r 1  D0 F1                  BNE FOUNDBAD  ;A9 bad (not = #$0A)?
+00007Br 1  E8                     INX
+00007Cr 1  EC 00 04               CPX $0400
+00007Fr 1  D0 EB                  BNE FOUNDBAD  ;A10 bad (not = #$0B)?
+000081r 1  E8                     INX
+000082r 1  EC 00 08               CPX $0800
+000085r 1  D0 E5                  BNE FOUNDBAD  ;A11 bad (not = #$0C)?
+000087r 1  E8                     INX
+000088r 1  EC 00 10               CPX $1000
+00008Br 1  D0 DF                  BNE FOUNDBAD  ;A12 bad (not = #$0D)?
+00008Dr 1  E8                     INX
+00008Er 1  EC 00 20               CPX $2000
+000091r 1  D0 D9                  BNE FOUNDBAD  ;A13 bad (not = #$0E)?
+000093r 1  E8                     INX
+000094r 1  EC 00 40               CPX $4000
+000097r 1  D0 D3                  BNE FOUNDBAD  ;A14 bad (not = #$0E)?
+000099r 1               
+000099r 1               ;SUCCESS: Program completed with no errors detected.
+000099r 1               ;
+000099r 1  A2 00        SUCCESS:  LDX #$00      ;Optional: Clean up the test bytes by filling
+00009Br 1  86 01                  STX $01       ;with #$00.
+00009Dr 1  86 02                  STX $02
+00009Fr 1  86 04                  STX $04
+0000A1r 1  86 08                  STX $08
+0000A3r 1  86 10                  STX $10
+0000A5r 1  86 20                  STX $20
+0000A7r 1  86 40                  STX $40
+0000A9r 1  86 80                  STX $80
+0000ABr 1  8E 00 01               STX $0100
+0000AEr 1  8E 00 02               STX $0200
+0000B1r 1  8E 00 04               STX $0400
+0000B4r 1  8E 00 08               STX $0800
+0000B7r 1  8E 00 10               STX $1000
+0000BAr 1  8E 00 20               STX $2000
+0000BDr 1  8E 00 40               STX $4000
+0000C0r 1               
+0000C0r 1  A9 FF                  lda #$ff
+0000C2r 1  8D 20 80               sta VIA1_ORB
+0000C5r 1  4C rr rr               jmp SUCCESS
+0000C8r 1  60                     RTS
+0000C9r 1               
+0000C9r 1  CA           FAILURE:  DEX           ;An error was detected.
+0000CAr 1                         ;lda #$ff
+0000CAr 1                         ;sta VIA1_ORB
+0000CAr 1               
+0000CAr 1  4C rr rr               jmp FAILURE
+0000CDr 1               ;	   .
+0000CDr 1               ;	   .            The address line under test (Axx) at the
+0000CDr 1               ;	   .            time of failure is in the X register.
+0000CDr 1               
+0000CDr 1               

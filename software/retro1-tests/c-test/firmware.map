@@ -1,0 +1,1342 @@
+Modules list:
+-------------
+zeropage.o:
+    ZEROPAGE          Offs=000000  Size=00002C  Align=00001  Fill=0000
+interrupt.o:
+    CODE              Offs=000000  Size=000003  Align=00001  Fill=0000
+startup.o:
+    VECTORS           Offs=000000  Size=000006  Align=00001  Fill=0000
+    STARTUP           Offs=000000  Size=000023  Align=00001  Fill=0000
+utils.o:
+    CODE              Offs=000100  Size=000020  Align=00100  Fill=00FD
+acia.o:
+    CODE              Offs=000120  Size=000072  Align=00001  Fill=0000
+led.o:
+    CODE              Offs=000192  Size=000027  Align=00001  Fill=0000
+main.o:
+    CODE              Offs=0001B9  Size=000038  Align=00001  Fill=0000
+    RODATA            Offs=000000  Size=000032  Align=00001  Fill=0000
+readline.o:
+    CODE              Offs=0001F1  Size=0001F0  Align=00001  Fill=0000
+    BSS               Offs=000000  Size=000054  Align=00001  Fill=0000
+    DATA              Offs=000000  Size=000001  Align=00001  Fill=0000
+variables.o:
+    CODE              Offs=0003E1  Size=0004E7  Align=00001  Fill=0000
+    RODATA            Offs=000032  Size=000047  Align=00001  Fill=0000
+    BSS               Offs=000054  Size=000009  Align=00001  Fill=0000
+    DATA              Offs=000001  Size=000002  Align=00001  Fill=0000
+basic.o:
+    CODE              Offs=0008C8  Size=001921  Align=00001  Fill=0000
+    RODATA            Offs=000079  Size=00020C  Align=00001  Fill=0000
+    BSS               Offs=00005D  Size=000234  Align=00001  Fill=0000
+    DATA              Offs=000003  Size=000056  Align=00001  Fill=0000
+cc65.lib(_heap.o):
+    DATA              Offs=000059  Size=00000A  Align=00001  Fill=0000
+    INIT              Offs=000000  Size=000010  Align=00001  Fill=0000
+cc65.lib(_heapmemavail.o):
+    CODE              Offs=0021E9  Size=00004E  Align=00001  Fill=0000
+cc65.lib(_hextab.o):
+    RODATA            Offs=000285  Size=000010  Align=00001  Fill=0000
+cc65.lib(_longminstr.o):
+    RODATA            Offs=000295  Size=00000C  Align=00001  Fill=0000
+cc65.lib(_printf.o):
+    CODE              Offs=002237  Size=0003A5  Align=00001  Fill=0000
+    BSS               Offs=000291  Size=00002B  Align=00001  Fill=0000
+    DATA              Offs=000063  Size=000003  Align=00001  Fill=0000
+cc65.lib(_scanf.o):
+    CODE              Offs=0025DC  Size=0007AB  Align=00001  Fill=0000
+    RODATA            Offs=0002A1  Size=000008  Align=00001  Fill=0000
+    BSS               Offs=0002BC  Size=000042  Align=00001  Fill=0000
+cc65.lib(_seterrno.o):
+    CODE              Offs=002D87  Size=000009  Align=00001  Fill=0000
+cc65.lib(addeqsp.o):
+    CODE              Offs=002D90  Size=000011  Align=00001  Fill=0000
+cc65.lib(addysp.o):
+    CODE              Offs=002DA1  Size=00000E  Align=00001  Fill=0000
+cc65.lib(along.o):
+    CODE              Offs=002DAF  Size=000012  Align=00001  Fill=0000
+cc65.lib(axlong.o):
+    CODE              Offs=002DC1  Size=000012  Align=00001  Fill=0000
+cc65.lib(call.o):
+    CODE              Offs=002DD3  Size=000007  Align=00001  Fill=0000
+cc65.lib(compl.o):
+    CODE              Offs=002DDA  Size=000009  Align=00001  Fill=0000
+cc65.lib(condes.o):
+    CODE              Offs=002DE3  Size=00000C  Align=00001  Fill=0000
+    DATA              Offs=000066  Size=000025  Align=00001  Fill=0000
+    INIT              Offs=000010  Size=00000C  Align=00001  Fill=0000
+cc65.lib(copydata.o):
+    CODE              Offs=002DEF  Size=00002D  Align=00001  Fill=0000
+cc65.lib(ctype.o):
+    RODATA            Offs=0002A9  Size=000100  Align=00001  Fill=0000
+cc65.lib(decaxy.o):
+    CODE              Offs=002E1C  Size=000009  Align=00001  Fill=0000
+cc65.lib(decsp1.o):
+    CODE              Offs=002E25  Size=000009  Align=00001  Fill=0000
+cc65.lib(decsp2.o):
+    CODE              Offs=002E2E  Size=00000D  Align=00001  Fill=0000
+cc65.lib(decsp3.o):
+    CODE              Offs=002E3B  Size=00000D  Align=00001  Fill=0000
+cc65.lib(decsp4.o):
+    CODE              Offs=002E48  Size=00000D  Align=00001  Fill=0000
+cc65.lib(decsp5.o):
+    CODE              Offs=002E55  Size=00000D  Align=00001  Fill=0000
+cc65.lib(decsp6.o):
+    CODE              Offs=002E62  Size=00000D  Align=00001  Fill=0000
+cc65.lib(div.o):
+    CODE              Offs=002E6F  Size=000018  Align=00001  Fill=0000
+cc65.lib(errno.o):
+    BSS               Offs=0002FE  Size=000002  Align=00001  Fill=0000
+cc65.lib(free.o):
+    CODE              Offs=002E87  Size=0001D3  Align=00001  Fill=0000
+cc65.lib(gt.o):
+    CODE              Offs=00305A  Size=00000A  Align=00001  Fill=0000
+cc65.lib(icmp.o):
+    CODE              Offs=003064  Size=00002E  Align=00001  Fill=0000
+cc65.lib(incax1.o):
+    CODE              Offs=003092  Size=000007  Align=00001  Fill=0000
+cc65.lib(incax2.o):
+    CODE              Offs=003099  Size=000007  Align=00001  Fill=0000
+cc65.lib(incax7.o):
+    CODE              Offs=0030A0  Size=000005  Align=00001  Fill=0000
+cc65.lib(incaxy.o):
+    CODE              Offs=0030A5  Size=00000B  Align=00001  Fill=0000
+cc65.lib(incsp1.o):
+    CODE              Offs=0030B0  Size=000007  Align=00001  Fill=0000
+cc65.lib(incsp2.o):
+    CODE              Offs=0030B7  Size=000016  Align=00001  Fill=0000
+cc65.lib(incsp3.o):
+    CODE              Offs=0030CD  Size=000005  Align=00001  Fill=0000
+cc65.lib(incsp4.o):
+    CODE              Offs=0030D2  Size=000005  Align=00001  Fill=0000
+cc65.lib(incsp5.o):
+    CODE              Offs=0030D7  Size=000005  Align=00001  Fill=0000
+cc65.lib(incsp6.o):
+    CODE              Offs=0030DC  Size=000005  Align=00001  Fill=0000
+cc65.lib(incsp7.o):
+    CODE              Offs=0030E1  Size=000005  Align=00001  Fill=0000
+cc65.lib(incsp8.o):
+    CODE              Offs=0030E6  Size=000005  Align=00001  Fill=0000
+cc65.lib(isalnum.o):
+    CODE              Offs=0030EB  Size=00000F  Align=00001  Fill=0000
+cc65.lib(isalpha.o):
+    CODE              Offs=0030FA  Size=00000F  Align=00001  Fill=0000
+cc65.lib(isdigit.o):
+    CODE              Offs=003109  Size=00000F  Align=00001  Fill=0000
+cc65.lib(isspace.o):
+    CODE              Offs=003118  Size=00000F  Align=00001  Fill=0000
+cc65.lib(isxdigit.o):
+    CODE              Offs=003127  Size=00000F  Align=00001  Fill=0000
+cc65.lib(jmpvec.o):
+    DATA              Offs=00008B  Size=000003  Align=00001  Fill=0000
+cc65.lib(ladd.o):
+    CODE              Offs=003136  Size=000025  Align=00001  Fill=0000
+cc65.lib(lcmp.o):
+    CODE              Offs=00315B  Size=00003B  Align=00001  Fill=0000
+cc65.lib(ldaxi.o):
+    CODE              Offs=003196  Size=00000D  Align=00001  Fill=0000
+cc65.lib(ldaxsp.o):
+    CODE              Offs=0031A3  Size=000009  Align=00001  Fill=0000
+cc65.lib(le.o):
+    CODE              Offs=0031AC  Size=00000A  Align=00001  Fill=0000
+cc65.lib(leaaxsp.o):
+    CODE              Offs=0031B6  Size=00000C  Align=00001  Fill=0000
+cc65.lib(lmul.o):
+    CODE              Offs=0031C2  Size=00005C  Align=00001  Fill=0000
+cc65.lib(lneg.o):
+    CODE              Offs=00321E  Size=00001E  Align=00001  Fill=0000
+cc65.lib(longjmp.o):
+    CODE              Offs=00323C  Size=000030  Align=00001  Fill=0000
+cc65.lib(lpush.o):
+    CODE              Offs=00326C  Size=000021  Align=00001  Fill=0000
+cc65.lib(ltoa.o):
+    CODE              Offs=00328D  Size=0000AF  Align=00001  Fill=0000
+cc65.lib(lult.o):
+    CODE              Offs=00333C  Size=000006  Align=00001  Fill=0000
+cc65.lib(makebool.o):
+    CODE              Offs=003342  Size=000031  Align=00001  Fill=0000
+cc65.lib(malloc.o):
+    CODE              Offs=003373  Size=00010E  Align=00001  Fill=0000
+cc65.lib(memcpy.o):
+    CODE              Offs=003481  Size=000041  Align=00001  Fill=0000
+cc65.lib(mod.o):
+    CODE              Offs=0034C2  Size=000014  Align=00001  Fill=0000
+cc65.lib(mul.o):
+    CODE              Offs=0034D6  Size=000045  Align=00001  Fill=0000
+cc65.lib(mul8.o):
+    CODE              Offs=00351B  Size=00003A  Align=00001  Fill=0000
+cc65.lib(mulax10.o):
+    CODE              Offs=003555  Size=000019  Align=00001  Fill=0000
+cc65.lib(neg.o):
+    CODE              Offs=00356E  Size=00000E  Align=00001  Fill=0000
+cc65.lib(or.o):
+    CODE              Offs=00357C  Size=000012  Align=00001  Fill=0000
+cc65.lib(popsreg.o):
+    CODE              Offs=00358E  Size=000010  Align=00001  Fill=0000
+cc65.lib(push1.o):
+    CODE              Offs=00359E  Size=000005  Align=00001  Fill=0000
+cc65.lib(pusha.o):
+    CODE              Offs=0035A3  Size=000016  Align=00001  Fill=0000
+cc65.lib(pushax.o):
+    CODE              Offs=0035B9  Size=00001A  Align=00001  Fill=0000
+cc65.lib(pushw.o):
+    CODE              Offs=0035D3  Size=00000F  Align=00001  Fill=0000
+cc65.lib(pushwsp.o):
+    CODE              Offs=0035E2  Size=00001C  Align=00001  Fill=0000
+cc65.lib(rand.o):
+    CODE              Offs=0035FE  Size=00004C  Align=00001  Fill=0000
+    DATA              Offs=00008E  Size=000004  Align=00001  Fill=0000
+cc65.lib(setjmp.o):
+    CODE              Offs=00364A  Size=000026  Align=00001  Fill=0000
+cc65.lib(shelp.o):
+    CODE              Offs=003670  Size=00001E  Align=00001  Fill=0000
+cc65.lib(sprintf.o):
+    CODE              Offs=00368E  Size=00002B  Align=00001  Fill=0000
+    BSS               Offs=000300  Size=000001  Align=00001  Fill=0000
+cc65.lib(sscanf.o):
+    CODE              Offs=0036B9  Size=00002B  Align=00001  Fill=0000
+    BSS               Offs=000301  Size=000001  Align=00001  Fill=0000
+cc65.lib(staxsp.o):
+    CODE              Offs=0036E4  Size=00000B  Align=00001  Fill=0000
+cc65.lib(staxspi.o):
+    CODE              Offs=0036EF  Size=00001B  Align=00001  Fill=0000
+cc65.lib(strchr.o):
+    CODE              Offs=00370A  Size=00002C  Align=00001  Fill=0000
+cc65.lib(strcmp.o):
+    CODE              Offs=003736  Size=000027  Align=00001  Fill=0000
+cc65.lib(strcpy.o):
+    CODE              Offs=00375D  Size=00001F  Align=00001  Fill=0000
+cc65.lib(strlen.o):
+    CODE              Offs=00377C  Size=000016  Align=00001  Fill=0000
+cc65.lib(strlower.o):
+    CODE              Offs=003792  Size=000028  Align=00001  Fill=0000
+cc65.lib(strncmp.o):
+    CODE              Offs=0037BA  Size=00003F  Align=00001  Fill=0000
+cc65.lib(strncpy.o):
+    CODE              Offs=0037F9  Size=000048  Align=00001  Fill=0000
+cc65.lib(strnicmp.o):
+    CODE              Offs=003841  Size=00005D  Align=00001  Fill=0000
+cc65.lib(sub.o):
+    CODE              Offs=00389E  Size=000015  Align=00001  Fill=0000
+cc65.lib(tolower.o):
+    CODE              Offs=0038B3  Size=000010  Align=00001  Fill=0000
+cc65.lib(udiv.o):
+    CODE              Offs=0038C3  Size=00004F  Align=00001  Fill=0000
+cc65.lib(vsnprintf.o):
+    CODE              Offs=003912  Size=0000C8  Align=00001  Fill=0000
+    DATA              Offs=000092  Size=000008  Align=00001  Fill=0000
+cc65.lib(vsprintf.o):
+    CODE              Offs=0039DA  Size=000012  Align=00001  Fill=0000
+cc65.lib(vsscanf.o):
+    CODE              Offs=0039EC  Size=00006D  Align=00001  Fill=0000
+    RODATA            Offs=0003A9  Size=000006  Align=00001  Fill=0000
+    BSS               Offs=000302  Size=000004  Align=00001  Fill=0000
+cc65.lib(zerobss.o):
+    INIT              Offs=00001C  Size=000023  Align=00001  Fill=0000
+
+
+Segment list:
+-------------
+Name                   Start     End    Size  Align
+----------------------------------------------------
+ZEROPAGE              000000  00002B  00002C  00001
+DATA                  000200  000299  00009A  00001
+BSS                   00029A  00059F  000306  00001
+STARTUP               00C000  00C024  000025  00001
+INIT                  00C025  00C063  00003F  00001
+CODE                  00C100  00FB58  003A59  00100
+RODATA                00FB59  00FF07  0003AF  00001
+VECTORS               00FFFA  00FFFF  000006  00001
+
+
+Exports list by name:
+---------------------
+__BSS_RUN__               00029A RLA    __BSS_SIZE__              000306 REA    
+__CONSTRUCTOR_COUNT__     000001 REA    __CONSTRUCTOR_TABLE__     00C023 RLA    
+__DATA_LOAD__             008000 RLA    __DATA_RUN__              000200 RLA    
+__DATA_SIZE__             00009A REA    __DESTRUCTOR_COUNT__      000000 REA    
+__DESTRUCTOR_TABLE__      00C025 RLA    __RAM_SIZE__              007D00 REA    
+__RAM_START__             000200 RLA    __STACKSIZE__             000200 REA    
+__STARTUP__               000001 REA    __ctype                   00FE02 RLA    
+__errno                   000598 RLA    __heapend                 00025D RLA    
+__heapfirst               00025F RLA    __heaplast                000261 RLA    
+__heapmemavail            00E2E9 RLA    __heapptr                 00025B RLA    
+__hextab                  00FDDE RLA    __longminstr              00FDEE RLA    
+__printf                  00E42A RLA    __scanf                   00E6DC RLA    
+__seterrno                00EE87 RLA    __setjmp                  00F74A RLA    
+_acia_getc                00C25D RLA    _acia_gets                00C268 RLA    
+_acia_init                00C220 RLA    _acia_put_newline         00C255 RLA    
+_acia_putc                00C22D RLA    _acia_puts                00C23A RLA    
+_clear_variables          00C870 RLA    _create_variable          00C5A5 RLA    
+_delete_variable          00C70D RLA    _find_variable            00C51A RLA    
+_free                     00EF87 RLA    _get_integer_variable_value 00C96E RLA    
+_get_string_variable_value 00C943 RLA    _hours                    000022 RLZ    
+_init_builtin_variables   00C4E1 RLA    _interrupted              00002B RLZ    
+_isalnum                  00F1EB RLA    _isalpha                  00F1FA RLA    
+_isdigit                  00F209 RLA    _isspace                  00F218 RLA    
+_isxdigit                 00F227 RLA    _led_init                 00C292 RLA    
+_led_set                  00C2A3 RLA    _longjmp                  00F33C RLA    
+_ltoa                     00F3A9 RLA    _main                     00C2B9 RLA    
+_malloc                   00F473 RLA    _memcpy                   00F581 RLA    
+_millis                   00001B RLZ    _minutes                  000021 RLZ    
+_print_all_variables      00C8CB RLA    _print_buffer             0002F7 RLA    
+_rand                     00F6FE RLA    _readline                 00C2F1 RLA    
+_readline_buffer          00029A RLA    _readline_reedit          00C34C RLA    
+_seconds                  000020 RLZ    _sprintf                  00F78E RLA    
+_srand                    00F73B RLA    _sscanf                   00F7B9 RLA    
+_strchr                   00F80A RLA    _strcmp                   00F836 RLA    
+_strcpy                   00F85D RLA    _strlen                   00F87C RLA    
+_strlower                 00F892 RLA    _strncasecmp              00F941 RLA    
+_strncmp                  00F8BA RLA    _strncpy                  00F8F9 RLA    
+_syntax_error_msg_with_arg 00CA74 RLA    _tolower                  00F9B3 RLA    
+_ultoa                    00F400 RLA    _vsprintf                 00FADA RLA    
+_vsscanf                  00FB37 RLA    addeq0sp                  00EE90 RLA    
+addeqysp                  00EE92 RLA    addysp                    00EEA2 RLA    
+addysp1                   00EEA1 RLA    aulong                    00EEAF RLA    
+axlong                    00EEC8 RLA    axulong                   00EEC1 RLA    
+booleq                    00F448 RLA    boolge                    00F458 RLA    
+boolgt                    00F456 RLA    boolle                    00F44E RLA    
+boolne                    00F442 RLA    boolult                   00F460 RLA    
+callax                    00EED3 RLA    complax                   00EEDA RLA    
+copydata                  00EEEF RLA    decaxy                    00EF1C RLA    
+decsp1                    00EF25 RLA    decsp2                    00EF2E RLA    
+decsp3                    00EF3B RLA    decsp4                    00EF48 RLA    
+decsp5                    00EF55 RLA    decsp6                    00EF62 RLA    
+donelib                   00EEE3 RLA    incax1                    00F192 RLA    
+incax2                    00F199 RLA    incax4                    00F1A5 RLA    
+incax7                    00F1A0 RLA    incaxy                    00F1A7 RLA    
+incsp1                    00F1B0 RLA    incsp2                    00F1BF RLA    
+incsp3                    00F1CD RLA    incsp4                    00F1D2 RLA    
+incsp5                    00F1D7 RLA    incsp6                    00F1DC RLA    
+incsp7                    00F1E1 RLA    incsp8                    00F1E6 RLA    
+initheap                  00C025  LAI   initlib                   00C035 RLA    
+irq_handler               00C102 RLA    irq_init                  00C100 RLA    
+jmpvec                    00028B RLA    ldax0sp                   00F2A3 RLA    
+ldaxi                     00F296 RLA    ldaxidx                   00F298 RLA    
+ldaxysp                   00F2A5 RLA    leaa0sp                   00F2B6 RLA    
+mul8x16                   00F61D RLA    mul8x16a                  00F628 RLA    
+mulax10                   00F655 RLA    negax                     00F66E RLA    
+negeax                    00F31E RLA    nmi_handler               00C101 RLA    
+popax                     00F1B7 RLA    popsargs                  00F770 RLA    
+popsreg                   00F68E RLA    ptr1                      000008 RLZ    
+ptr2                      00000A RLZ    ptr3                      00000C RLZ    
+ptr4                      00000E RLZ    push0                     00F6B9 RLA    
+push1                     00F69E RLA    pusha                     00F6A7 RLA    
+pusha0                    00F6BB RLA    pushax                    00F6BD RLA    
+pusheax                   00F375 RLA    pushw                     00F6D3 RLA    
+pushw0sp                  00F6E2 RLA    pushwidx                  00F6D5 RLA    
+pushwysp                  00F6E4 RLA    regbank                   000014 RLZ    
+regsave                   000004 RLZ    sp                        000000 RLZ    
+sreg                      000002 RLZ    stax0sp                   00F7E4 RLA    
+staxspidx                 00F7EF RLA    staxysp                   00F7E6 RLA    
+tmp1                      000010 RLZ    tmp2                      000011 RLZ    
+tmp3                      000012 RLZ    tmp4                      000013 RLZ    
+tmpstack                  00001A RLZ    tosaddeax                 00F23C RLA    
+tosdivax                  00EF71 RLA    tosgtax                   00F15E RLA    
+tosicmp                   00F166 RLA    tosicmp0                  00F164 RLA    
+toslcmp                   00F25B RLA    tosleax                   00F2B0 RLA    
+tosmodax                  00F5C4 RLA    tosmulax                  00F5D6 RLA    
+tosmuleax                 00F2C8 RLA    tosora0                   00F67C RLA    
+tossuba0                  00F99E RLA    tosulteax                 00F43C RLA    
+udiv16                    00F9D4 RLA    vsnprintf                 00FA15 RLA    
+zerobss                   00C041 RLA    
+
+
+Exports list by value:
+----------------------
+sp                        000000 RLZ    __DESTRUCTOR_COUNT__      000000 REA    
+__CONSTRUCTOR_COUNT__     000001 REA    __STARTUP__               000001 REA    
+sreg                      000002 RLZ    regsave                   000004 RLZ    
+ptr1                      000008 RLZ    ptr2                      00000A RLZ    
+ptr3                      00000C RLZ    ptr4                      00000E RLZ    
+tmp1                      000010 RLZ    tmp2                      000011 RLZ    
+tmp3                      000012 RLZ    tmp4                      000013 RLZ    
+regbank                   000014 RLZ    tmpstack                  00001A RLZ    
+_millis                   00001B RLZ    _seconds                  000020 RLZ    
+_minutes                  000021 RLZ    _hours                    000022 RLZ    
+_interrupted              00002B RLZ    __DATA_SIZE__             00009A REA    
+__STACKSIZE__             000200 REA    __RAM_START__             000200 RLA    
+__DATA_RUN__              000200 RLA    __heapptr                 00025B RLA    
+__heapend                 00025D RLA    __heapfirst               00025F RLA    
+__heaplast                000261 RLA    jmpvec                    00028B RLA    
+__BSS_RUN__               00029A RLA    _readline_buffer          00029A RLA    
+_print_buffer             0002F7 RLA    __BSS_SIZE__              000306 REA    
+__errno                   000598 RLA    __RAM_SIZE__              007D00 REA    
+__DATA_LOAD__             008000 RLA    __CONSTRUCTOR_TABLE__     00C023 RLA    
+__DESTRUCTOR_TABLE__      00C025 RLA    initheap                  00C025  LAI   
+initlib                   00C035 RLA    zerobss                   00C041 RLA    
+irq_init                  00C100 RLA    nmi_handler               00C101 RLA    
+irq_handler               00C102 RLA    _acia_init                00C220 RLA    
+_acia_putc                00C22D RLA    _acia_puts                00C23A RLA    
+_acia_put_newline         00C255 RLA    _acia_getc                00C25D RLA    
+_acia_gets                00C268 RLA    _led_init                 00C292 RLA    
+_led_set                  00C2A3 RLA    _main                     00C2B9 RLA    
+_readline                 00C2F1 RLA    _readline_reedit          00C34C RLA    
+_init_builtin_variables   00C4E1 RLA    _find_variable            00C51A RLA    
+_create_variable          00C5A5 RLA    _delete_variable          00C70D RLA    
+_clear_variables          00C870 RLA    _print_all_variables      00C8CB RLA    
+_get_string_variable_value 00C943 RLA    _get_integer_variable_value 00C96E RLA    
+_syntax_error_msg_with_arg 00CA74 RLA    __heapmemavail            00E2E9 RLA    
+__printf                  00E42A RLA    __scanf                   00E6DC RLA    
+__seterrno                00EE87 RLA    addeq0sp                  00EE90 RLA    
+addeqysp                  00EE92 RLA    addysp1                   00EEA1 RLA    
+addysp                    00EEA2 RLA    aulong                    00EEAF RLA    
+axulong                   00EEC1 RLA    axlong                    00EEC8 RLA    
+callax                    00EED3 RLA    complax                   00EEDA RLA    
+donelib                   00EEE3 RLA    copydata                  00EEEF RLA    
+decaxy                    00EF1C RLA    decsp1                    00EF25 RLA    
+decsp2                    00EF2E RLA    decsp3                    00EF3B RLA    
+decsp4                    00EF48 RLA    decsp5                    00EF55 RLA    
+decsp6                    00EF62 RLA    tosdivax                  00EF71 RLA    
+_free                     00EF87 RLA    tosgtax                   00F15E RLA    
+tosicmp0                  00F164 RLA    tosicmp                   00F166 RLA    
+incax1                    00F192 RLA    incax2                    00F199 RLA    
+incax7                    00F1A0 RLA    incax4                    00F1A5 RLA    
+incaxy                    00F1A7 RLA    incsp1                    00F1B0 RLA    
+popax                     00F1B7 RLA    incsp2                    00F1BF RLA    
+incsp3                    00F1CD RLA    incsp4                    00F1D2 RLA    
+incsp5                    00F1D7 RLA    incsp6                    00F1DC RLA    
+incsp7                    00F1E1 RLA    incsp8                    00F1E6 RLA    
+_isalnum                  00F1EB RLA    _isalpha                  00F1FA RLA    
+_isdigit                  00F209 RLA    _isspace                  00F218 RLA    
+_isxdigit                 00F227 RLA    tosaddeax                 00F23C RLA    
+toslcmp                   00F25B RLA    ldaxi                     00F296 RLA    
+ldaxidx                   00F298 RLA    ldax0sp                   00F2A3 RLA    
+ldaxysp                   00F2A5 RLA    tosleax                   00F2B0 RLA    
+leaa0sp                   00F2B6 RLA    tosmuleax                 00F2C8 RLA    
+negeax                    00F31E RLA    _longjmp                  00F33C RLA    
+pusheax                   00F375 RLA    _ltoa                     00F3A9 RLA    
+_ultoa                    00F400 RLA    tosulteax                 00F43C RLA    
+boolne                    00F442 RLA    booleq                    00F448 RLA    
+boolle                    00F44E RLA    boolgt                    00F456 RLA    
+boolge                    00F458 RLA    boolult                   00F460 RLA    
+_malloc                   00F473 RLA    _memcpy                   00F581 RLA    
+tosmodax                  00F5C4 RLA    tosmulax                  00F5D6 RLA    
+mul8x16                   00F61D RLA    mul8x16a                  00F628 RLA    
+mulax10                   00F655 RLA    negax                     00F66E RLA    
+tosora0                   00F67C RLA    popsreg                   00F68E RLA    
+push1                     00F69E RLA    pusha                     00F6A7 RLA    
+push0                     00F6B9 RLA    pusha0                    00F6BB RLA    
+pushax                    00F6BD RLA    pushw                     00F6D3 RLA    
+pushwidx                  00F6D5 RLA    pushw0sp                  00F6E2 RLA    
+pushwysp                  00F6E4 RLA    _rand                     00F6FE RLA    
+_srand                    00F73B RLA    __setjmp                  00F74A RLA    
+popsargs                  00F770 RLA    _sprintf                  00F78E RLA    
+_sscanf                   00F7B9 RLA    stax0sp                   00F7E4 RLA    
+staxysp                   00F7E6 RLA    staxspidx                 00F7EF RLA    
+_strchr                   00F80A RLA    _strcmp                   00F836 RLA    
+_strcpy                   00F85D RLA    _strlen                   00F87C RLA    
+_strlower                 00F892 RLA    _strncmp                  00F8BA RLA    
+_strncpy                  00F8F9 RLA    _strncasecmp              00F941 RLA    
+tossuba0                  00F99E RLA    _tolower                  00F9B3 RLA    
+udiv16                    00F9D4 RLA    vsnprintf                 00FA15 RLA    
+_vsprintf                 00FADA RLA    _vsscanf                  00FB37 RLA    
+__hextab                  00FDDE RLA    __longminstr              00FDEE RLA    
+__ctype                   00FE02 RLA    
+
+
+Imports list:
+-------------
+__BSS_RUN__ ([linker generated]):
+    _heap.o                   common/_heap.s(8)
+    zerobss.o                 common/zerobss.s(8)
+__BSS_SIZE__ ([linker generated]):
+    _heap.o                   common/_heap.s(8)
+    zerobss.o                 common/zerobss.s(8)
+__CONSTRUCTOR_COUNT__ ([linker generated]):
+    condes.o                  runtime/condes.s(18)
+__CONSTRUCTOR_TABLE__ ([linker generated]):
+    condes.o                  runtime/condes.s(18)
+__DATA_LOAD__ ([linker generated]):
+    copydata.o                common/copydata.s(8)
+__DATA_RUN__ ([linker generated]):
+    copydata.o                common/copydata.s(8)
+__DATA_SIZE__ ([linker generated]):
+    copydata.o                common/copydata.s(8)
+__DESTRUCTOR_COUNT__ ([linker generated]):
+    condes.o                  runtime/condes.s(19)
+__DESTRUCTOR_TABLE__ ([linker generated]):
+    condes.o                  runtime/condes.s(19)
+__RAM_SIZE__ ([linker generated]):
+    startup.o                 startup.s65(8)
+__RAM_START__ ([linker generated]):
+    startup.o                 startup.s65(7)
+__STACKSIZE__ ([linker generated]):
+    _heap.o                   common/_heap.s(8)
+__STARTUP__ (startup.o):
+    main.o                    main.s(13)
+__ctype (ctype.o):
+    strlower.o                common/strlower.s(13)
+    tolower.o                 common/tolower.s(8)
+    isxdigit.o                /home/grappendorf/cc65/asminc/ctype.inc(9)
+    isspace.o                 /home/grappendorf/cc65/asminc/ctype.inc(9)
+    strnicmp.o                common/strnicmp.s(10)
+    isdigit.o                 /home/grappendorf/cc65/asminc/ctype.inc(9)
+    isalpha.o                 /home/grappendorf/cc65/asminc/ctype.inc(9)
+    isalnum.o                 /home/grappendorf/cc65/asminc/ctype.inc(9)
+__errno (errno.o):
+    _seterrno.o               /home/grappendorf/cc65/asminc/errno.inc(7)
+__heapend (_heap.o):
+    malloc.o                  /home/grappendorf/cc65/asminc/_heap.inc(33)
+    _heapmemavail.o           /home/grappendorf/cc65/asminc/_heap.inc(33)
+__heapfirst (_heap.o):
+    malloc.o                  /home/grappendorf/cc65/asminc/_heap.inc(34)
+    free.o                    /home/grappendorf/cc65/asminc/_heap.inc(34)
+    _heapmemavail.o           /home/grappendorf/cc65/asminc/_heap.inc(34)
+__heaplast (_heap.o):
+    malloc.o                  /home/grappendorf/cc65/asminc/_heap.inc(35)
+    free.o                    /home/grappendorf/cc65/asminc/_heap.inc(35)
+__heapmemavail (_heapmemavail.o):
+    basic.o                   basic.s(24)
+    main.o                    main.s(15)
+__heapptr (_heap.o):
+    malloc.o                  /home/grappendorf/cc65/asminc/_heap.inc(32)
+    free.o                    /home/grappendorf/cc65/asminc/_heap.inc(32)
+    _heapmemavail.o           /home/grappendorf/cc65/asminc/_heap.inc(32)
+__hextab (_hextab.o):
+    ltoa.o                    common/ltoa.s(10)
+__longminstr (_longminstr.o):
+    ltoa.o                    common/ltoa.s(10)
+__printf (_printf.o):
+    vsnprintf.o               common/vsnprintf.s(9)
+__scanf (_scanf.o):
+    vsscanf.o                 common/vsscanf.s(11)
+__seterrno (_seterrno.o):
+    _scanf.o                  ../libwrk/sim6502/_scanf.s(16)
+__setjmp (setjmp.o):
+    _scanf.o                  ../libwrk/sim6502/_scanf.s(14)
+_acia_getc (acia.o):
+    readline.o                readline.s(21)
+_acia_gets (acia.o):
+    basic.o                   basic.s(38)
+_acia_init (acia.o):
+    main.o                    main.s(16)
+_acia_put_newline (acia.o):
+    basic.o                   basic.s(37)
+    variables.o               variables.s(36)
+    readline.o                readline.s(20)
+_acia_putc (acia.o):
+    basic.o                   basic.s(35)
+    variables.o               variables.s(34)
+    readline.o                readline.s(18)
+_acia_puts (acia.o):
+    basic.o                   basic.s(36)
+    variables.o               variables.s(35)
+    readline.o                readline.s(19)
+    main.o                    main.s(17)
+_clear_variables (variables.o):
+    basic.o                   basic.s(47)
+_create_variable (variables.o):
+    basic.o                   basic.s(45)
+_delete_variable (variables.o):
+    basic.o                   basic.s(46)
+_find_variable (variables.o):
+    basic.o                   basic.s(44)
+_free (free.o):
+    basic.o                   basic.s(23)
+    variables.o               variables.s(15)
+_get_integer_variable_value (variables.o):
+    basic.o                   basic.s(50)
+_get_string_variable_value (variables.o):
+    basic.o                   basic.s(49)
+_hours (zeropage.o):
+    variables.o               variables.s(24)
+_init_builtin_variables (variables.o):
+    basic.o                   basic.s(43)
+_interrupted (zeropage.o):
+    basic.o                   basic.s(42)
+    readline.o                readline.s(17)
+_isalnum (isalnum.o):
+    basic.o                   basic.s(26)
+_isalpha (isalpha.o):
+    basic.o                   basic.s(27)
+_isdigit (isdigit.o):
+    _scanf.o                  ../libwrk/sim6502/_scanf.s(17)
+    basic.o                   basic.s(28)
+_isspace (isspace.o):
+    _scanf.o                  ../libwrk/sim6502/_scanf.s(18)
+_isxdigit (isxdigit.o):
+    _scanf.o                  ../libwrk/sim6502/_scanf.s(19)
+_led_init (led.o):
+    main.o                    main.s(18)
+_led_set (led.o):
+    basic.o                   basic.s(29)
+_longjmp (longjmp.o):
+    _scanf.o                  ../libwrk/sim6502/_scanf.s(15)
+_ltoa (ltoa.o):
+    _printf.o                 common/_printf.s(12)
+_main (main.o):
+    startup.o                 startup.s65(9)
+_malloc (malloc.o):
+    basic.o                   basic.s(22)
+    variables.o               variables.s(14)
+_memcpy (memcpy.o):
+    vsnprintf.o               common/vsnprintf.s(9)
+_millis (zeropage.o):
+    basic.o                   basic.s(51)
+    variables.o               variables.s(21)
+_minutes (zeropage.o):
+    variables.o               variables.s(23)
+_print_all_variables (variables.o):
+    basic.o                   basic.s(48)
+_print_buffer (basic.o):
+    variables.o               variables.s(20)
+    main.o                    main.s(19)
+_rand (rand.o):
+    variables.o               variables.s(16)
+_readline (readline.o):
+    basic.o                   basic.s(39)
+_readline_buffer (readline.o):
+    basic.o                   basic.s(40)
+_readline_reedit (readline.o):
+    basic.o                   basic.s(41)
+_seconds (zeropage.o):
+    variables.o               variables.s(22)
+_sprintf (sprintf.o):
+    basic.o                   basic.s(20)
+    variables.o               variables.s(13)
+    main.o                    main.s(14)
+_srand (rand.o):
+    basic.o                   basic.s(25)
+_sscanf (sscanf.o):
+    basic.o                   basic.s(21)
+_strchr (strchr.o):
+    basic.o                   basic.s(13)
+_strcmp (strcmp.o):
+    basic.o                   basic.s(14)
+_strcpy (strcpy.o):
+    basic.o                   basic.s(15)
+    variables.o               variables.s(17)
+_strlen (strlen.o):
+    _printf.o                 common/_printf.s(13)
+    basic.o                   basic.s(16)
+    variables.o               variables.s(18)
+_strlower (strlower.o):
+    _printf.o                 common/_printf.s(13)
+_strncasecmp (strnicmp.o):
+    basic.o                   basic.s(19)
+_strncmp (strncmp.o):
+    basic.o                   basic.s(17)
+_strncpy (strncpy.o):
+    basic.o                   basic.s(18)
+_syntax_error_msg_with_arg (basic.o):
+    variables.o               variables.s(19)
+_tolower (tolower.o):
+    _scanf.o                  ../libwrk/sim6502/_scanf.s(20)
+_ultoa (ltoa.o):
+    _printf.o                 common/_printf.s(12)
+_vsprintf (vsprintf.o):
+    sprintf.o                 common/sprintf.s(8)
+_vsscanf (vsscanf.o):
+    sscanf.o                  common/sscanf.s(8)
+addeq0sp (addeqsp.o):
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+addeqysp (addeqsp.o):
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+addysp (addysp.o):
+    incsp8.o                  runtime/incsp8.s(8)
+    sscanf.o                  common/sscanf.s(8)
+    sprintf.o                 common/sprintf.s(8)
+    incsp7.o                  runtime/incsp7.s(8)
+    incsp6.o                  runtime/incsp6.s(8)
+    incsp5.o                  runtime/incsp5.s(8)
+    incsp4.o                  runtime/incsp4.s(8)
+    incsp3.o                  runtime/incsp3.s(8)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    variables.o               variables.s(766)
+addysp1 (addysp.o):
+    sub.o                     runtime/sub.s(8)
+    lmul.o                    runtime/lmul.s(8)
+    or.o                      runtime/or.s(8)
+    ladd.o                    runtime/ladd.s(8)
+aulong (along.o):
+    _scanf.o                  ../libwrk/sim6502/_scanf.s(1075)
+axlong (axlong.o):
+    _printf.o                 common/_printf.s(11)
+axulong (axlong.o):
+    _printf.o                 common/_printf.s(11)
+    _scanf.o                  ../libwrk/sim6502/_scanf.s(1075)
+    _scanf.o                  ../libwrk/sim6502/_scanf.s(1075)
+booleq (makebool.o):
+    _scanf.o                  ../libwrk/sim6502/_scanf.s(1075)
+    basic.o                   basic.s(3602)
+boolge (makebool.o):
+    basic.o                   basic.s(3602)
+boolgt (makebool.o):
+    gt.o                      runtime/gt.s(8)
+boolle (makebool.o):
+    le.o                      runtime/le.s(8)
+boolne (makebool.o):
+    basic.o                   basic.s(3602)
+boolult (makebool.o):
+    lult.o                    runtime/lult.s(8)
+callax (call.o):
+    variables.o               variables.s(766)
+    variables.o               variables.s(766)
+    variables.o               variables.s(766)
+complax (compl.o):
+    _scanf.o                  ../libwrk/sim6502/_scanf.s(1075)
+copydata (copydata.o):
+    startup.o                 startup.s65(11)
+decaxy (decaxy.o):
+    _scanf.o                  ../libwrk/sim6502/_scanf.s(1075)
+decsp1 (decsp1.o):
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+decsp2 (decsp2.o):
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    variables.o               variables.s(766)
+    variables.o               variables.s(766)
+    readline.o                readline.s(395)
+decsp3 (decsp3.o):
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+decsp4 (decsp4.o):
+    sscanf.o                  common/sscanf.s(8)
+    sprintf.o                 common/sprintf.s(8)
+    lpush.o                   runtime/lpush.s(11)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    variables.o               variables.s(766)
+decsp5 (decsp5.o):
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+decsp6 (decsp6.o):
+    _printf.o                 common/_printf.s(11)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+donelib (condes.o):
+    startup.o                 startup.s65(13)
+incax1 (incax1.o):
+    _scanf.o                  ../libwrk/sim6502/_scanf.s(1075)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    variables.o               variables.s(766)
+incax2 (incax2.o):
+    basic.o                   basic.s(3602)
+incax4 (incaxy.o):
+    basic.o                   basic.s(3602)
+incax7 (incax7.o):
+    basic.o                   basic.s(3602)
+incaxy (incaxy.o):
+    incax7.o                  runtime/incax7.s(8)
+incsp1 (incsp1.o):
+    _scanf.o                  ../libwrk/sim6502/_scanf.s(1075)
+    _scanf.o                  ../libwrk/sim6502/_scanf.s(1075)
+    _scanf.o                  ../libwrk/sim6502/_scanf.s(1075)
+    _scanf.o                  ../libwrk/sim6502/_scanf.s(1075)
+    _scanf.o                  ../libwrk/sim6502/_scanf.s(1075)
+    variables.o               variables.s(766)
+    readline.o                readline.s(395)
+incsp2 (incsp2.o):
+    vsnprintf.o               common/vsnprintf.s(8)
+    staxspi.o                 runtime/staxspi.s(8)
+    popsreg.o                 runtime/popsreg.s(8)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    variables.o               variables.s(766)
+    variables.o               variables.s(766)
+incsp3 (incsp3.o):
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    variables.o               variables.s(766)
+    variables.o               variables.s(766)
+    readline.o                readline.s(395)
+incsp4 (incsp4.o):
+    lcmp.o                    runtime/lcmp.s(9)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    variables.o               variables.s(766)
+incsp5 (incsp5.o):
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+incsp6 (incsp6.o):
+    vsnprintf.o               common/vsnprintf.s(8)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+incsp7 (incsp7.o):
+    basic.o                   basic.s(3602)
+    variables.o               variables.s(766)
+    variables.o               variables.s(766)
+incsp8 (incsp8.o):
+    _scanf.o                  ../libwrk/sim6502/_scanf.s(1075)
+initlib (condes.o):
+    startup.o                 startup.s65(12)
+irq_handler (interrupt.o):
+    startup.o                 startup.s65(15)
+irq_init (interrupt.o):
+    startup.o                 startup.s65(16)
+jmpvec (jmpvec.o):
+    _scanf.o                  ../libwrk/sim6502/_scanf.s(1075)
+    _scanf.o                  ../libwrk/sim6502/_scanf.s(1075)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+ldax0sp (ldaxsp.o):
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    variables.o               variables.s(766)
+    variables.o               variables.s(766)
+    variables.o               variables.s(766)
+    variables.o               variables.s(766)
+    variables.o               variables.s(766)
+    variables.o               variables.s(766)
+    variables.o               variables.s(766)
+ldaxi (ldaxi.o):
+    _scanf.o                  ../libwrk/sim6502/_scanf.s(1075)
+    _scanf.o                  ../libwrk/sim6502/_scanf.s(1075)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    variables.o               variables.s(766)
+    variables.o               variables.s(766)
+    variables.o               variables.s(766)
+ldaxidx (ldaxi.o):
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    variables.o               variables.s(766)
+    variables.o               variables.s(766)
+    variables.o               variables.s(766)
+    variables.o               variables.s(766)
+    variables.o               variables.s(766)
+    variables.o               variables.s(766)
+    variables.o               variables.s(766)
+    variables.o               variables.s(766)
+ldaxysp (ldaxsp.o):
+    vsnprintf.o               common/vsnprintf.s(8)
+    _scanf.o                  ../libwrk/sim6502/_scanf.s(1075)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    variables.o               variables.s(766)
+    variables.o               variables.s(766)
+    variables.o               variables.s(766)
+    variables.o               variables.s(766)
+    variables.o               variables.s(766)
+leaa0sp (leaaxsp.o):
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    variables.o               variables.s(766)
+    variables.o               variables.s(766)
+mul8x16 (mul8.o):
+    mul.o                     runtime/mul.s(8)
+mul8x16a (mul8.o):
+    mul.o                     runtime/mul.s(8)
+mulax10 (mulax10.o):
+    _scanf.o                  ../libwrk/sim6502/_scanf.s(1075)
+negax (neg.o):
+    shelp.o                   runtime/shelp.s(11)
+    mod.o                     runtime/mod.s(11)
+    div.o                     runtime/div.s(11)
+negeax (lneg.o):
+    _scanf.o                  ../libwrk/sim6502/_scanf.s(1075)
+nmi_handler (interrupt.o):
+    startup.o                 startup.s65(14)
+popax (incsp2.o):
+    memcpy.o                  common/memcpy.s(14)
+    ltoa.o                    common/ltoa.s(9)
+    _printf.o                 common/_printf.s(11)
+    vsnprintf.o               common/vsnprintf.s(8)
+    longjmp.o                 common/longjmp.s(8)
+    vsscanf.o                 common/vsscanf.s(11)
+    strnicmp.o                common/strnicmp.s(10)
+    strncpy.o                 common/strncpy.s(8)
+    strncmp.o                 common/strncmp.s(8)
+    strcpy.o                  common/strcpy.s(8)
+    strcmp.o                  common/strcmp.s(8)
+    strchr.o                  common/strchr.s(8)
+    shelp.o                   runtime/shelp.s(11)
+    acia.o                    acia.s65(12)
+popsargs (shelp.o):
+    mod.o                     runtime/mod.s(11)
+    div.o                     runtime/div.s(11)
+popsreg (popsreg.o):
+    udiv.o                    runtime/udiv.s(8)
+    mul8.o                    runtime/mul8.s(9)
+    mul.o                     runtime/mul.s(9)
+ptr1 (zeropage.o):
+    strlower.o                common/strlower.s(14)
+    memcpy.o                  common/memcpy.s(15)
+    ltoa.o                    common/ltoa.s(11)
+    _printf.o                 /home/grappendorf/cc65/asminc/zeropage.inc(12)
+    vsnprintf.o               common/vsnprintf.s(10)
+    setjmp.o                  common/setjmp.s(8)
+    mulax10.o                 runtime/mulax10.s(9)
+    longjmp.o                 common/longjmp.s(9)
+    lmul.o                    runtime/lmul.s(9)
+    lcmp.o                    runtime/lcmp.s(10)
+    _scanf.o                  ../libwrk/sim6502/_scanf.s(11)
+    zerobss.o                 common/zerobss.s(9)
+    vsscanf.o                 common/vsscanf.s(12)
+    udiv.o                    runtime/udiv.s(9)
+    strnicmp.o                common/strnicmp.s(11)
+    strncpy.o                 common/strncpy.s(9)
+    strncmp.o                 common/strncmp.s(9)
+    strlen.o                  common/strlen.s(8)
+    strcpy.o                  common/strcpy.s(9)
+    strcmp.o                  common/strcmp.s(9)
+    strchr.o                  common/strchr.s(9)
+    staxspi.o                 runtime/staxspi.s(9)
+    sscanf.o                  common/sscanf.s(9)
+    sprintf.o                 common/sprintf.s(9)
+    pushw.o                   runtime/pushw.s(9)
+    mod.o                     runtime/mod.s(12)
+    malloc.o                  common/malloc.s(108)
+    ldaxi.o                   runtime/ldaxi.s(8)
+    free.o                    common/free.s(62)
+    copydata.o                common/copydata.s(9)
+    call.o                    runtime/call.s(8)
+    _heapmemavail.o           common/_heapmemavail.s(10)
+    basic.o                   basic.s(11)
+    variables.o               variables.s(11)
+    readline.o                readline.s(11)
+    acia.o                    zeropage.inc65(10)
+ptr2 (zeropage.o):
+    strlower.o                common/strlower.s(14)
+    memcpy.o                  common/memcpy.s(15)
+    ltoa.o                    common/ltoa.s(11)
+    _printf.o                 /home/grappendorf/cc65/asminc/zeropage.inc(12)
+    longjmp.o                 common/longjmp.s(9)
+    vsscanf.o                 common/vsscanf.s(12)
+    strnicmp.o                common/strnicmp.s(11)
+    strncpy.o                 common/strncpy.s(9)
+    strncmp.o                 common/strncmp.s(9)
+    strcpy.o                  common/strcpy.s(9)
+    strcmp.o                  common/strcmp.s(9)
+    malloc.o                  common/malloc.s(108)
+    free.o                    common/free.s(62)
+    copydata.o                common/copydata.s(9)
+    _heapmemavail.o           common/_heapmemavail.s(10)
+ptr3 (zeropage.o):
+    memcpy.o                  common/memcpy.s(15)
+    ltoa.o                    common/ltoa.s(11)
+    lmul.o                    runtime/lmul.s(9)
+    strnicmp.o                common/strnicmp.s(11)
+    strncmp.o                 common/strncmp.s(9)
+    malloc.o                  common/malloc.s(108)
+    free.o                    common/free.s(62)
+ptr4 (zeropage.o):
+    lmul.o                    runtime/lmul.s(9)
+    udiv.o                    runtime/udiv.s(9)
+    shelp.o                   runtime/shelp.s(12)
+    mul8.o                    runtime/mul8.s(10)
+    mul.o                     runtime/mul.s(10)
+    free.o                    common/free.s(62)
+push0 (pushax.o):
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+push1 (push1.o):
+    _printf.o                 common/_printf.s(11)
+pusha (pusha.o):
+    _scanf.o                  ../libwrk/sim6502/_scanf.s(1075)
+    _scanf.o                  ../libwrk/sim6502/_scanf.s(1075)
+    _scanf.o                  ../libwrk/sim6502/_scanf.s(1075)
+    _scanf.o                  ../libwrk/sim6502/_scanf.s(1075)
+    _scanf.o                  ../libwrk/sim6502/_scanf.s(1075)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    variables.o               variables.s(766)
+    variables.o               variables.s(766)
+    variables.o               variables.s(766)
+    variables.o               variables.s(766)
+    variables.o               variables.s(766)
+    readline.o                readline.s(395)
+    readline.o                readline.s(395)
+pusha0 (pushax.o):
+    push1.o                   runtime/push1.s(8)
+    _scanf.o                  ../libwrk/sim6502/_scanf.s(1075)
+    variables.o               variables.s(766)
+    variables.o               variables.s(766)
+pushax (pushax.o):
+    _printf.o                 common/_printf.s(11)
+    _scanf.o                  ../libwrk/sim6502/_scanf.s(1075)
+    _scanf.o                  ../libwrk/sim6502/_scanf.s(1075)
+    pushw.o                   runtime/pushw.s(8)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    variables.o               variables.s(766)
+    variables.o               variables.s(766)
+    variables.o               variables.s(766)
+    variables.o               variables.s(766)
+    variables.o               variables.s(766)
+    variables.o               variables.s(766)
+    variables.o               variables.s(766)
+    variables.o               variables.s(766)
+    variables.o               variables.s(766)
+    variables.o               variables.s(766)
+    main.o                    main.s(68)
+pusheax (lpush.o):
+    _printf.o                 common/_printf.s(11)
+    _scanf.o                  ../libwrk/sim6502/_scanf.s(1075)
+    basic.o                   basic.s(3602)
+pushw (pushw.o):
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+pushw0sp (pushwsp.o):
+    vsprintf.o                common/vsprintf.s(8)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    variables.o               variables.s(766)
+pushwidx (pushw.o):
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    variables.o               variables.s(766)
+pushwysp (pushwsp.o):
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    variables.o               variables.s(766)
+    variables.o               variables.s(766)
+regbank (zeropage.o):
+    _printf.o                 /home/grappendorf/cc65/asminc/zeropage.inc(14)
+    _scanf.o                  ../libwrk/sim6502/_scanf.s(10)
+regsave (zeropage.o):
+    _scanf.o                  ../libwrk/sim6502/_scanf.s(10)
+sp (zeropage.o):
+    memcpy.o                  common/memcpy.s(15)
+    _printf.o                 /home/grappendorf/cc65/asminc/zeropage.inc(11)
+    vsnprintf.o               common/vsnprintf.s(10)
+    sub.o                     runtime/sub.s(9)
+    setjmp.o                  common/setjmp.s(8)
+    longjmp.o                 common/longjmp.s(9)
+    lmul.o                    runtime/lmul.s(9)
+    lcmp.o                    runtime/lcmp.s(10)
+    _scanf.o                  ../libwrk/sim6502/_scanf.s(10)
+    _heap.o                   common/_heap.s(9)
+    vsscanf.o                 common/vsscanf.s(12)
+    staxspi.o                 runtime/staxspi.s(9)
+    staxsp.o                  runtime/staxsp.s(8)
+    sscanf.o                  common/sscanf.s(9)
+    sprintf.o                 common/sprintf.s(9)
+    pushwsp.o                 runtime/pushwsp.s(8)
+    pushax.o                  runtime/pushax.s(8)
+    pusha.o                   runtime/pusha.s(8)
+    popsreg.o                 runtime/popsreg.s(9)
+    or.o                      runtime/or.s(9)
+    lpush.o                   runtime/lpush.s(12)
+    leaaxsp.o                 runtime/leaaxsp.s(8)
+    ldaxsp.o                  runtime/ldaxsp.s(8)
+    ladd.o                    runtime/ladd.s(9)
+    incsp2.o                  runtime/incsp2.s(8)
+    incsp1.o                  runtime/incsp1.s(8)
+    icmp.o                    runtime/icmp.s(9)
+    decsp6.o                  runtime/decsp6.s(8)
+    decsp5.o                  runtime/decsp5.s(8)
+    decsp4.o                  runtime/decsp4.s(8)
+    decsp3.o                  runtime/decsp3.s(8)
+    decsp2.o                  runtime/decsp2.s(8)
+    decsp1.o                  runtime/decsp1.s(8)
+    addysp.o                  runtime/addysp.s(8)
+    addeqsp.o                 runtime/addeqsp.s(8)
+    basic.o                   basic.s(10)
+    variables.o               variables.s(10)
+    readline.o                readline.s(10)
+    startup.o                 zeropage.inc65(1)
+sreg (zeropage.o):
+    ltoa.o                    common/ltoa.s(11)
+    _printf.o                 /home/grappendorf/cc65/asminc/zeropage.inc(11)
+    lneg.o                    runtime/lneg.s(11)
+    lmul.o                    runtime/lmul.s(9)
+    lcmp.o                    runtime/lcmp.s(10)
+    axlong.o                  runtime/axlong.s(8)
+    along.o                   runtime/along.s(8)
+    _scanf.o                  ../libwrk/sim6502/_scanf.s(10)
+    udiv.o                    runtime/udiv.s(9)
+    shelp.o                   runtime/shelp.s(12)
+    popsreg.o                 runtime/popsreg.s(9)
+    mul8.o                    runtime/mul8.s(10)
+    mul.o                     runtime/mul.s(10)
+    lpush.o                   runtime/lpush.s(12)
+    ladd.o                    runtime/ladd.s(9)
+    icmp.o                    runtime/icmp.s(9)
+    div.o                     runtime/div.s(12)
+    basic.o                   basic.s(10)
+    variables.o               variables.s(10)
+stax0sp (staxsp.o):
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    variables.o               variables.s(766)
+    variables.o               variables.s(766)
+    variables.o               variables.s(766)
+staxspidx (staxspi.o):
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    variables.o               variables.s(766)
+staxysp (staxsp.o):
+    vsprintf.o                common/vsprintf.s(8)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    basic.o                   basic.s(3602)
+    variables.o               variables.s(766)
+    variables.o               variables.s(766)
+tmp1 (zeropage.o):
+    ltoa.o                    common/ltoa.s(11)
+    _printf.o                 /home/grappendorf/cc65/asminc/zeropage.inc(13)
+    decaxy.o                  runtime/decaxy.s(8)
+    _scanf.o                  ../libwrk/sim6502/_scanf.s(11)
+    strnicmp.o                common/strnicmp.s(11)
+    strncpy.o                 common/strncpy.s(9)
+    strchr.o                  common/strchr.s(9)
+    staxspi.o                 runtime/staxspi.s(9)
+    shelp.o                   runtime/shelp.s(12)
+    or.o                      runtime/or.s(9)
+    mul.o                     runtime/mul.s(10)
+    mod.o                     runtime/mod.s(12)
+    ladd.o                    runtime/ladd.s(9)
+    incaxy.o                  runtime/incaxy.s(8)
+    div.o                     runtime/div.s(12)
+    copydata.o                common/copydata.s(9)
+    basic.o                   basic.s(11)
+    readline.o                readline.s(11)
+    acia.o                    zeropage.inc65(5)
+    utils.o                   zeropage.inc65(5)
+tmp2 (zeropage.o):
+    lmul.o                    runtime/lmul.s(9)
+    strncpy.o                 common/strncpy.s(9)
+    shelp.o                   runtime/shelp.s(12)
+    div.o                     runtime/div.s(12)
+tmp3 (zeropage.o):
+    lmul.o                    runtime/lmul.s(9)
+    strncpy.o                 common/strncpy.s(9)
+tmp4 (zeropage.o):
+    lmul.o                    runtime/lmul.s(9)
+tmpstack (zeropage.o):
+    acia.o                    zeropage.inc65(9)
+tosaddeax (ladd.o):
+    _scanf.o                  ../libwrk/sim6502/_scanf.s(1075)
+    basic.o                   basic.s(3602)
+tosdivax (div.o):
+    basic.o                   basic.s(3602)
+tosgtax (gt.o):
+    basic.o                   basic.s(3602)
+tosicmp (icmp.o):
+    le.o                      runtime/le.s(8)
+    gt.o                      runtime/gt.s(8)
+    basic.o                   basic.s(3602)
+tosicmp0 (icmp.o):
+    _scanf.o                  ../libwrk/sim6502/_scanf.s(1075)
+    variables.o               variables.s(766)
+toslcmp (lcmp.o):
+    lult.o                    runtime/lult.s(8)
+tosleax (le.o):
+    basic.o                   basic.s(3602)
+tosmodax (mod.o):
+    basic.o                   basic.s(3602)
+tosmulax (mul.o):
+    basic.o                   basic.s(3602)
+tosmuleax (lmul.o):
+    _scanf.o                  ../libwrk/sim6502/_scanf.s(1075)
+tosora0 (or.o):
+    basic.o                   basic.s(3602)
+tossuba0 (sub.o):
+    _scanf.o                  ../libwrk/sim6502/_scanf.s(1075)
+tosulteax (lult.o):
+    basic.o                   basic.s(3602)
+udiv16 (udiv.o):
+    mod.o                     runtime/mod.s(11)
+    div.o                     runtime/div.s(11)
+vsnprintf (vsnprintf.o):
+    vsprintf.o                common/vsprintf.s(9)
+zerobss (zerobss.o):
+    startup.o                 startup.s65(10)
+

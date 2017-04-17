@@ -1,0 +1,57 @@
+Modules list:
+-------------
+a1basic.o:
+    CODE              Offs=000000  Size=001000  Align=00001  Fill=0000
+    RODATA            Offs=000000  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=000000  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=000000  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+
+
+Segment list:
+-------------
+Name                   Start     End    Size  Align
+----------------------------------------------------
+NULL                  000000  000000  000000  00001
+ZEROPAGE              000000  000000  000000  00001
+CODE                  000200  0011FF  001000  00001
+BSS                   001200  001200  000000  00001
+DATA                  001200  001200  000000  00001
+RODATA                001200  001200  000000  00001
+
+
+Exports list by name:
+---------------------
+START                     00E000  LA    __BSS_LOAD__              001200  LA    
+__BSS_RUN__               001200  LA    __BSS_SIZE__              000000  EA    
+__STACKSIZE__             000800 REA    __ZP_FILEOFFS__           000000  EA    
+__ZP_LAST__               000000  LA    __ZP_SIZE__               00001F  EA    
+__ZP_START__              000000  LA    warm                      00E2B3  LA    
+
+
+
+Exports list by value:
+----------------------
+__ZP_FILEOFFS__           000000  EA    __ZP_LAST__               000000  LA    
+__ZP_START__              000000  LA    __BSS_SIZE__              000000  EA    
+__ZP_SIZE__               00001F  EA    __STACKSIZE__             000800 REA    
+__BSS_LOAD__              001200  LA    __BSS_RUN__               001200  LA    
+START                     00E000  LA    warm                      00E2B3  LA    
+
+
+
+Imports list:
+-------------
+START (a1basic.o):
+__BSS_LOAD__ ([linker generated]):
+__BSS_RUN__ ([linker generated]):
+__BSS_SIZE__ ([linker generated]):
+__STACKSIZE__ ([linker generated]):
+    [linker generated]        c:\Users\Stache\Documents\cc65-snapshot-win32\cfg/none.cfg(6)
+__ZP_FILEOFFS__ ([linker generated]):
+__ZP_LAST__ ([linker generated]):
+__ZP_SIZE__ ([linker generated]):
+__ZP_START__ ([linker generated]):
+warm (a1basic.o):
+

@@ -1,0 +1,7 @@
+IO_AREA = $A000
+ACIAdata	= IO_AREA		; simulated ACIA r/w port
+ACIAstatus  = IO_AREA+1
+ACIAcommand = IO_AREA+2
+ACIAcontrol = IO_AREA+3
+
+

@@ -1,0 +1,47 @@
+          .setcpu "65C02"
+
+          VIA1_DDRB = $8022
+          VIA1_ORB  = $8020
+          VIA1_DDRA = $8023
+          VIA1_ORA  = $8021
+          VIA2_DDRB = $8122
+          VIA2_ORB  = $8120
+          VIA2_DDRA = $8123
+          VIA2_ORA  = $8121
+         
+
+          .segment "VECTORS"
+
+          .word   nmi
+          .word   reset
+          .word   irq
+
+          .code
+
+reset:    jmp main
+
+nmi:      rti
+
+irq:      rti
+
+main:     lda #$ff
+          sta VIA1_DDRB
+          sta VIA2_DDRB
+
+loop:     lda #$01
+          sta VIA1_ORB
+          sta VIA2_ORB
+          jsr delay
+          lda #$02
+          sta VIA1_ORB
+          sta VIA2_ORB
+          jsr delay
+          jmp loop
+
+delay:    ldx #200
+@delay2:  ldy #0
+@delay1:  dey
+          bne @delay1
+          dex
+          bne @delay2
+          rts

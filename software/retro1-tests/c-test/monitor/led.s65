@@ -1,0 +1,34 @@
+        .export _led_init
+            .export _led_set
+            
+            .import popa
+            .import incsp1
+
+            .include "io.inc65"
+            .include "zeropage.inc65"
+            .include "macros.inc65"
+            
+            
+
+            .code
+
+_led_init:  lda LED_DDR
+            ora #LED
+            sta LED_DDR
+            lda LED_OUT
+            and #<~LED
+            sta LED_OUT
+            rts
+
+_led_set:   cmp #0
+            bne @on
+@off:       lda LED_OUT
+            and #<~LED
+            sta LED_OUT
+            rts
+@on:        lda LED_OUT
+            ora #LED 
+            sta LED_OUT 
+            rts
+            
+

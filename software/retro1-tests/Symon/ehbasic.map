@@ -1,0 +1,41 @@
+Modules list:
+-------------
+ehbasic.o:
+    CODE              Offs=000000  Size=002825  Align=00001  Fill=0000
+    RODATA            Offs=000000  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=000000  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=000000  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+    MONITOR           Offs=000000  Size=0000DF  Align=00001  Fill=0000
+    VECTORS           Offs=000000  Size=000006  Align=00001  Fill=0000
+
+
+Segment list:
+-------------
+Name                   Start     End    Size  Align
+----------------------------------------------------
+BSS                   000000  000000  000000  00001
+NULL                  000000  000000  000000  00001
+RODATA                000000  000000  000000  00001
+ZEROPAGE              000000  000000  000000  00001
+CODE                  00C000  00E824  002825  00001
+DATA                  00E825  00E825  000000  00001
+MONITOR               00FF00  00FFDE  0000DF  00001
+VECTORS               00FFFA  00FFFF  000006  00001
+
+
+Exports list by name:
+---------------------
+__STACKSIZE__             000300  EA    
+
+
+Exports list by value:
+----------------------
+__STACKSIZE__             000300  EA    
+
+
+Imports list:
+-------------
+__STACKSIZE__ ([linker generated]):
+

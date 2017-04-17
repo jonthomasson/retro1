@@ -1,0 +1,17 @@
+IO_AREA = $A000
+ACIAdata	= IO_AREA		; simulated ACIA r/w port
+ACIAstatus  = IO_AREA+1
+ACIAcommand = IO_AREA+2
+ACIAcontrol = IO_AREA+3
+
+
+ACIAWrite:
+    PHA				; save accumulator
+ACIAloop:
+	LDA	ACIAstatus		; Read 6551 status
+	AND	#$10			; Is tx buffer full?
+	BEQ	ACIAloop			; if not, loop back
+	PLA				; Otherwise, restore accumulator
+    AND #$7F ;standard ascii
+	STA	ACIAdata		; write byte to 6551
+    RTS

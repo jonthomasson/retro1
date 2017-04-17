@@ -1,0 +1,2 @@
+.import rtc_init
+.import rtc_test

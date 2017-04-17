@@ -1,0 +1,48 @@
+ACIA        = $A000
+ACIA_CTRL   = ACIA+3
+ACIA_CMD    = ACIA+2
+ACIA_SR     = ACIA+1
+ACIA_DAT    = ACIA
+MSGL      = $2C ;register low byte for message
+MSGH      = $2D ;register high byte for message
+
+ACIA_INIT:	LDA #$1F        ;* Init ACIA to 19200 Baud.
+            STA ACIA_CTRL
+            LDA #$0B        ;* No Parity.
+            STA ACIA_CMD
+            
+            RTS
+			
+ACIA_WRITE: 
+            PHA             ;*Save A
+            AND #$7F        ;*Change to "standard ASCII"
+ACIA_SEND:  
+            STA ACIA_DAT    ;*Send it.
+ACIA_WAIT_TXD:       
+            LDA ACIA_SR     ;*Load status register for ACIA
+            AND #$10        ;*Mask bit 4.
+            BEQ    ACIA_WAIT_TXD    ;*ACIA not done yet, wait.
+            PLA             ;*Restore A
+           
+            RTS              ;*Done, over and out...
+            
+ACIA_SHWMSG:      
+            LDY #$0         ;for y = 0 to length of message{acia_write}
+ACIA_PRINT:      
+            LDA (MSGL),Y
+            BEQ ACIA_DONE
+            JSR ACIA_WRITE
+            INY 
+            BNE ACIA_PRINT
+ACIA_DONE:      
+            RTS 
+ACIA_GETCHAR:
+            LDA ACIA_SR
+            AND #$08
+            BEQ NoDataIn
+            LDA ACIA_DAT
+            SEC
+            RTS
+NoDataIn:
+            CLC
+            RTS

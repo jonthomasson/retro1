@@ -1,0 +1,123 @@
+Modules list:
+-------------
+startup.o:
+    VECTORS           Offs=000000  Size=000006  Align=00001  Fill=0000
+    STARTUP           Offs=000000  Size=00001A  Align=00001  Fill=0000
+led.o:
+    CODE              Offs=000000  Size=000027  Align=00001  Fill=0000
+tools.o:
+    CODE              Offs=000027  Size=000020  Align=00001  Fill=0000
+acia.o:
+    CODE              Offs=000047  Size=000072  Align=00001  Fill=0000
+main.o:
+    CODE              Offs=0000B9  Size=000062  Align=00001  Fill=0000
+    RODATA            Offs=000000  Size=000039  Align=00001  Fill=0000
+    BSS               Offs=000000  Size=000052  Align=00001  Fill=0000
+cc65.lib(copydata.o):
+    CODE              Offs=00011B  Size=00002D  Align=00001  Fill=0000
+cc65.lib(incsp2.o):
+    CODE              Offs=000148  Size=000016  Align=00001  Fill=0000
+cc65.lib(pushax.o):
+    CODE              Offs=00015E  Size=00001A  Align=00001  Fill=0000
+cc65.lib(zerobss.o):
+    INIT              Offs=000000  Size=000023  Align=00001  Fill=0000
+cc65.lib(zeropage.o):
+    ZEROPAGE          Offs=000000  Size=00001A  Align=00001  Fill=0000
+
+
+Segment list:
+-------------
+Name                   Start     End    Size  Align
+----------------------------------------------------
+ZEROPAGE              000000  000019  00001A  00001
+BSS                   000200  000251  000052  00001
+STARTUP               00C000  00C019  00001A  00001
+INIT                  00C01A  00C03C  000023  00001
+CODE                  00C100  00C277  000178  00001
+RODATA                00C278  00C2B0  000039  00001
+VECTORS               00FFFA  00FFFF  000006  00001
+
+
+Exports list by name:
+---------------------
+__BSS_RUN__               000200 RLA    __BSS_SIZE__              000052 REA    
+__DATA_LOAD__             008000 RLA    __DATA_RUN__              000200 RLA    
+__DATA_SIZE__             000000 REA    __RAM_SIZE__              007D00 REA    
+__RAM_START__             000200 RLA    __STARTUP__               000001 REA    
+_acia_gets                00C18F RLA    _acia_init                00C147 RLA    
+_acia_puts                00C161 RLA    _led_init                 00C100 RLA    
+_led_set                  00C111 RLA    _main                     00C1B9 RLA    
+copydata                  00C21B RLA    popax                     00C248 RLA    
+ptr1                      000008 RLZ    ptr2                      00000A RLZ    
+pushax                    00C262 RLA    sp                        000000 RLZ    
+tmp1                      000010 RLZ    zerobss                   00C01A RLA    
+
+
+
+Exports list by value:
+----------------------
+sp                        000000 RLZ    __DATA_SIZE__             000000 REA    
+__STARTUP__               000001 REA    ptr1                      000008 RLZ    
+ptr2                      00000A RLZ    tmp1                      000010 RLZ    
+__BSS_SIZE__              000052 REA    __RAM_START__             000200 RLA    
+__BSS_RUN__               000200 RLA    __DATA_RUN__              000200 RLA    
+__RAM_SIZE__              007D00 REA    __DATA_LOAD__             008000 RLA    
+zerobss                   00C01A RLA    _led_init                 00C100 RLA    
+_led_set                  00C111 RLA    _acia_init                00C147 RLA    
+_acia_puts                00C161 RLA    _acia_gets                00C18F RLA    
+_main                     00C1B9 RLA    copydata                  00C21B RLA    
+popax                     00C248 RLA    pushax                    00C262 RLA    
+
+
+
+Imports list:
+-------------
+__BSS_RUN__ ([linker generated]):
+    zerobss.o                 common/zerobss.s(8)
+__BSS_SIZE__ ([linker generated]):
+    zerobss.o                 common/zerobss.s(8)
+__DATA_LOAD__ ([linker generated]):
+    copydata.o                common/copydata.s(8)
+__DATA_RUN__ ([linker generated]):
+    copydata.o                common/copydata.s(8)
+__DATA_SIZE__ ([linker generated]):
+    copydata.o                common/copydata.s(8)
+__RAM_SIZE__ ([linker generated]):
+    startup.o                 startup.s65(6)
+__RAM_START__ ([linker generated]):
+    startup.o                 startup.s65(5)
+__STARTUP__ (startup.o):
+    main.o                    main.s(13)
+_acia_gets (acia.o):
+    main.o                    main.s(18)
+_acia_init (acia.o):
+    main.o                    main.s(16)
+_acia_puts (acia.o):
+    main.o                    main.s(17)
+_led_init (led.o):
+    main.o                    main.s(14)
+_led_set (led.o):
+    main.o                    main.s(15)
+_main (main.o):
+    startup.o                 startup.s65(7)
+copydata (copydata.o):
+    startup.o                 startup.s65(9)
+popax (incsp2.o):
+    acia.o                    acia.s65(7)
+ptr1 (zeropage.o):
+    zerobss.o                 common/zerobss.s(9)
+    copydata.o                common/copydata.s(9)
+ptr2 (zeropage.o):
+    copydata.o                common/copydata.s(9)
+pushax (pushax.o):
+    main.o                    main.s(94)
+sp (zeropage.o):
+    pushax.o                  runtime/pushax.s(8)
+    incsp2.o                  runtime/incsp2.s(8)
+    startup.o                 zeropage.inc65(1)
+tmp1 (zeropage.o):
+    copydata.o                common/copydata.s(9)
+    tools.o                   zeropage.inc65(5)
+zerobss (zerobss.o):
+    startup.o                 startup.s65(8)
+

@@ -1,0 +1,18 @@
+ca65 V2.15 - Git a85ac88
+Main file   : firmware.s65
+Current file: firmware.s65
+
+000000r 1                         .setcpu "65C02"
+000000r 1               
+000000r 1                         .segment "VECTORS"
+000000r 1               
+000000r 1                         .code
+000000r 1               
+000000r 1  A2 FF        LDX #$FF
+000002r 1  8E 00 30     STX $3000     ;$3000 = #$FF
+000005r 1               
+000005r 1  AE 00 30     main: LDX $3000
+000008r 1  CA           DEX
+000009r 1  8E 00 30     STX $3000
+00000Cr 1  4C rr rr     JMP main
+00000Cr 1               

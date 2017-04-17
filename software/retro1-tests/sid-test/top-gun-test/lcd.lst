@@ -1,0 +1,632 @@
+ca65 V2.15 - Git f7cdfbf
+Main file   : lcd.s65
+Current file: lcd.s65
+
+000000r 1                                     .setcpu "6502"
+000000r 1                                     .include "macros.inc65"
+000000r 2               ; Push X
+000000r 2               .macro phx
+000000r 2                 sta TMP_STACK
+000000r 2                 txa
+000000r 2                 pha
+000000r 2                 lda TMP_STACK
+000000r 2               .endmacro
+000000r 2               
+000000r 2               ; Push Y
+000000r 2               .macro phy
+000000r 2                 sta TMP_STACK
+000000r 2                 tya
+000000r 2                 pha
+000000r 2                 lda TMP_STACK
+000000r 2               .endmacro
+000000r 2               
+000000r 2               ; Push X and Y
+000000r 2               .macro phxy
+000000r 2                 sta TMP_STACK
+000000r 2                 txa
+000000r 2                 pha
+000000r 2                 tya
+000000r 2                 pha
+000000r 2                 lda TMP_STACK
+000000r 2               .endmacro
+000000r 2               
+000000r 2               ; Push A and X
+000000r 2               .macro phax
+000000r 2                 sta TMP_STACK
+000000r 2                 pha
+000000r 2                 txa
+000000r 2                 pha
+000000r 2                 lda TMP_STACK
+000000r 2               .endmacro
+000000r 2               
+000000r 2               ; Push A and Y
+000000r 2               .macro phay
+000000r 2                 sta TMP_STACK
+000000r 2                 pha
+000000r 2                 tya
+000000r 2                 pha
+000000r 2                 lda TMP_STACK
+000000r 2               .endmacro
+000000r 2               
+000000r 2               ; Push A, X and Y
+000000r 2               .macro phaxy
+000000r 2                 sta TMP_STACK
+000000r 2                 pha
+000000r 2                 txa
+000000r 2                 pha
+000000r 2                 tya
+000000r 2                 pha
+000000r 2                 lda TMP_STACK
+000000r 2               .endmacro
+000000r 2               
+000000r 2               ; Pull X
+000000r 2               .macro plx
+000000r 2                 sta TMP_STACK
+000000r 2                 pla
+000000r 2                 tax
+000000r 2                 lda TMP_STACK
+000000r 2               .endmacro
+000000r 2               
+000000r 2               ; Pull Y
+000000r 2               .macro ply
+000000r 2                 sta TMP_STACK
+000000r 2                 pla
+000000r 2                 tay
+000000r 2                 lda TMP_STACK
+000000r 2               .endmacro
+000000r 2               
+000000r 2               ; Pull X and Y
+000000r 2               .macro plxy
+000000r 2                 sta TMP_STACK
+000000r 2                 pla
+000000r 2                 tay
+000000r 2                 pla
+000000r 2                 tax
+000000r 2                 lda TMP_STACK
+000000r 2               .endmacro
+000000r 2               
+000000r 2               ; Pull A and X
+000000r 2               .macro plax
+000000r 2                 pla
+000000r 2                 tax
+000000r 2                 pla
+000000r 2               .endmacro
+000000r 2               
+000000r 2               ; Pull A and Y
+000000r 2               .macro play
+000000r 2                 pla
+000000r 2                 tay
+000000r 2                 pla
+000000r 2               .endmacro
+000000r 2               
+000000r 2               ; Pull A, X and Y
+000000r 2               .macro plaxy
+000000r 2                 pla
+000000r 2                 tay
+000000r 2                 pla
+000000r 2                 tax
+000000r 2                 pla
+000000r 2               .endmacro
+000000r 2               
+000000r 2               ; Load zero page register reg/reg+1 with the 16-bit value, destroys A
+000000r 2               .macro ld16 reg, value
+000000r 2                 lda #<(value)
+000000r 2                 sta reg
+000000r 2                 lda #>(value)
+000000r 2                 sta reg + 1
+000000r 2               .endmacro
+000000r 2               
+000000r 1                                     .include "zeropage.inc65"
+000000r 2               .importzp RES
+000000r 2               .importzp R0
+000000r 2               .importzp R1
+000000r 2               .importzp TMP0
+000000r 2               .importzp TMP1
+000000r 2               .importzp TMP_STACK
+000000r 2               
+000000r 1                                     .include "io.inc65"
+000000r 2               ; CPU frequency
+000000r 2               
+000000r 2               F_CPU = 1000000
+000000r 2               
+000000r 2               ; ACIA registers
+000000r 2               
+000000r 2               ACIA_BASE    = $7f00
+000000r 2               ACIA_DATA    = ACIA_BASE
+000000r 2               ACIA_STATUS  = ACIA_BASE + 1
+000000r 2               ACIA_COMMAND = ACIA_BASE + 2
+000000r 2               ACIA_CONTROL = ACIA_BASE + 3
+000000r 2               
+000000r 2               ; ACIA control register bit values
+000000r 2               
+000000r 2               ACIA_STOP_BITS_1 = %00000000
+000000r 2               ACIA_STOP_BITS_2 = %10000000
+000000r 2               ACIA_DATA_BITS_8 = %00000000
+000000r 2               ACIA_DATA_BITS_7 = %00100000
+000000r 2               ACIA_DATA_BITS_6 = %01000000
+000000r 2               ACIA_DATA_BITS_5 = %01100000
+000000r 2               ACIA_CLOCK_EXT   = %00000000
+000000r 2               ACIA_CLOCK_INT   = %00010000
+000000r 2               ACIA_BAUD_16XEXT = %00000000
+000000r 2               ACIA_BAUD_50     = %00000001
+000000r 2               ACIA_BAUD_75     = %00000010
+000000r 2               ACIA_BAUD_109    = %00000011
+000000r 2               ACIA_BAUD_134    = %00000100
+000000r 2               ACIA_BAUD_150    = %00000101
+000000r 2               ACIA_BAUD_300    = %00000110
+000000r 2               ACIA_BAUD_600    = %00000111
+000000r 2               ACIA_BAUD_1200   = %00001000
+000000r 2               ACIA_BAUD_1800   = %00001001
+000000r 2               ACIA_BAUD_2400   = %00001010
+000000r 2               ACIA_BAUD_3600   = %00001011
+000000r 2               ACIA_BAUD_4800   = %00001100
+000000r 2               ACIA_BAUD_7200   = %00001101
+000000r 2               ACIA_BAUD_9600   = %00001110
+000000r 2               ACIA_BAUD_19200  = %00001111
+000000r 2               
+000000r 2               ; ACIA command register bit values
+000000r 2               
+000000r 2               ACIA_PARITY_ODD              = %00000000
+000000r 2               ACIA_PARITY_EVEN             = %01000000
+000000r 2               ACIA_PARITY_MARK             = %10000000
+000000r 2               ACIA_PARITY_SPACE            = %11000000
+000000r 2               ACIA_PARITY_DISABLE          = %00000000
+000000r 2               ACIA_PARITY_ENABLE           = %00100000
+000000r 2               ACIA_ECHO_DISABLE            = %00000000
+000000r 2               ACIA_ECHO_ENABLE             = %00010000
+000000r 2               ACIA_TX_INT_DISABLE_RTS_HIGH = %00000000
+000000r 2               ACIA_TX_INT_ENABLE_RTS_LOW   = %00000100
+000000r 2               ACIA_TX_INT_DISABLE_RTS_LOW  = %00001000
+000000r 2               ACIA_TX_INT_DISABLE_BREAK    = %00001100
+000000r 2               ACIA_RX_INT_ENABLE           = %00000000
+000000r 2               ACIA_RX_INT_DISABLE          = %00000010
+000000r 2               ACIA_DTR_HIGH                = %00000000
+000000r 2               ACIA_DTR_LOW                 = %00000001
+000000r 2               
+000000r 2               ; ACIA status register bit masks
+000000r 2               
+000000r 2               ACIA_STATUS_IRQ        = 1 << 7
+000000r 2               ACIA_STATUS_DSR        = 1 << 6
+000000r 2               ACIA_STATUS_DCD        = 1 << 5
+000000r 2               ACIA_STATUS_TX_EMPTY   = 1 << 4
+000000r 2               ACIA_STATUS_RX_FULL    = 1 << 3
+000000r 2               ACIA_STATUS_OVERRUN    = 1 << 2
+000000r 2               ACIA_STATUS_FRAME_ERR  = 1 << 1
+000000r 2               ACIA_STATUS_PARITY_ERR = 1 << 0
+000000r 2               
+000000r 2               ; VIA registers
+000000r 2               
+000000r 2               VIA1_BASE   = $7f20
+000000r 2               VIA1_ORB    = VIA1_BASE
+000000r 2               VIA1_IRB    = VIA1_BASE
+000000r 2               VIA1_ORA    = VIA1_BASE + 1
+000000r 2               VIA1_IRA    = VIA1_BASE + 1
+000000r 2               VIA1_DDRB   = VIA1_BASE + 2
+000000r 2               VIA1_DDRA   = VIA1_BASE + 3
+000000r 2               VIA1_T1C_L  = VIA1_BASE + 4
+000000r 2               VIA1_T1C_H  = VIA1_BASE + 5
+000000r 2               VIA1_T1L_L  = VIA1_BASE + 6
+000000r 2               VIA1_T1L_H  = VIA1_BASE + 7
+000000r 2               VIA1_T2C_L  = VIA1_BASE + 8
+000000r 2               VIA1_T2C_H  = VIA1_BASE + 9
+000000r 2               VIA1_SR     = VIA1_BASE + 10
+000000r 2               VIA1_ACR    = VIA1_BASE + 11
+000000r 2               VIA1_PCR    = VIA1_BASE + 12
+000000r 2               VIA1_IFR    = VIA1_BASE + 13
+000000r 2               VIA1_IER    = VIA1_BASE + 14
+000000r 2               VIA1_ORA_NH = VIA1_BASE + 15
+000000r 2               VIA1_IRA_NH = VIA1_BASE + 15
+000000r 2               
+000000r 2               VIA2_BASE   = $7f40
+000000r 2               VIA2_ORB    = VIA2_BASE
+000000r 2               VIA2_IRB    = VIA2_BASE
+000000r 2               VIA2_ORA    = VIA2_BASE + 1
+000000r 2               VIA2_IRA    = VIA2_BASE + 1
+000000r 2               VIA2_DDRB   = VIA2_BASE + 2
+000000r 2               VIA2_DDRA   = VIA2_BASE + 3
+000000r 2               VIA2_T1C_L  = VIA2_BASE + 4
+000000r 2               VIA2_T1C_H  = VIA2_BASE + 5
+000000r 2               VIA2_T1L_L  = VIA2_BASE + 6
+000000r 2               VIA2_T1L_H  = VIA2_BASE + 7
+000000r 2               VIA2_T2C_L  = VIA2_BASE + 8
+000000r 2               VIA2_T2C_H  = VIA2_BASE + 9
+000000r 2               VIA2_SR     = VIA2_BASE + 10
+000000r 2               VIA2_ACR    = VIA2_BASE + 11
+000000r 2               VIA2_PCR    = VIA2_BASE + 12
+000000r 2               VIA2_IFR    = VIA2_BASE + 13
+000000r 2               VIA2_IER    = VIA2_BASE + 14
+000000r 2               VIA2_ORA_NH = VIA2_BASE + 15
+000000r 2               VIA2_IRA_NH = VIA2_BASE + 15
+000000r 2               
+000000r 2               ; Port bits
+000000r 2               
+000000r 2               VIA_PA0 = (1 << 0)
+000000r 2               VIA_PA1 = (1 << 1)
+000000r 2               VIA_PA2 = (1 << 2)
+000000r 2               VIA_PA3 = (1 << 3)
+000000r 2               VIA_PA4 = (1 << 4)
+000000r 2               VIA_PA5 = (1 << 5)
+000000r 2               VIA_PA6 = (1 << 6)
+000000r 2               VIA_PA7 = (1 << 7)
+000000r 2               
+000000r 2               ; Port bits
+000000r 2               
+000000r 2               VIA_PB0 = 1 << 0
+000000r 2               VIA_PB1 = 1 << 1
+000000r 2               VIA_PB2 = 1 << 2
+000000r 2               VIA_PB3 = 1 << 3
+000000r 2               VIA_PB4 = 1 << 4
+000000r 2               VIA_PB5 = 1 << 5
+000000r 2               VIA_PB6 = 1 << 6
+000000r 2               VIA_PB7 = 1 << 7
+000000r 2               
+000000r 2               ; SID registers
+000000r 2               
+000000r 2               SID_BASE = $7f60
+000000r 2               SID_VOICE1_FREQ_L = SID_BASE
+000000r 2               SID_VOICE1_FREQ_H = SID_BASE + 1
+000000r 2               SID_VOICE1_PW_L   = SID_BASE + 2
+000000r 2               SID_VOICE1_PW_H   = SID_BASE + 3
+000000r 2               SID_VOICE1_CTRL   = SID_BASE + 4
+000000r 2               SID_VOICE1_AD     = SID_BASE + 5
+000000r 2               SID_VOICE1_SR     = SID_BASE + 6
+000000r 2               SID_VOICE2_FREQ_L = SID_BASE + 7
+000000r 2               SID_VOICE2_FREQ_H = SID_BASE + 8
+000000r 2               SID_VOICE2_PW_L   = SID_BASE + 9
+000000r 2               SID_VOICE2_PW_H   = SID_BASE + 10
+000000r 2               SID_VOICE2_CTRL   = SID_BASE + 11
+000000r 2               SID_VOICE2_AD     = SID_BASE + 12
+000000r 2               SID_VOICE2_SR     = SID_BASE + 13
+000000r 2               SID_VOICE3_FREQ_L = SID_BASE + 14
+000000r 2               SID_VOICE3_FREQ_H = SID_BASE + 15
+000000r 2               SID_VOICE3_PW_L   = SID_BASE + 16
+000000r 2               SID_VOICE3_PW_H   = SID_BASE + 17
+000000r 2               SID_VOICE3_CTRL   = SID_BASE + 18
+000000r 2               SID_VOICE3_AD     = SID_BASE + 19
+000000r 2               SID_VOICE3_SR     = SID_BASE + 20
+000000r 2               SID_FC_L          = SID_BASE + 21
+000000r 2               SID_FC_H          = SID_BASE + 22
+000000r 2               SID_RES_FILT      = SID_BASE + 23
+000000r 2               SID_MODE_VOLUME   = SID_BASE + 24
+000000r 2               SID_POTX          = SID_BASE + 25
+000000r 2               SID_POTY          = SID_BASE + 26
+000000r 2               SID_OSC3        = SID_BASE + 27
+000000r 2               SID_ENV3          = SID_BASE + 28
+000000r 2               
+000000r 2               ; LED
+000000r 2               
+000000r 2               LED_DDR = VIA1_DDRA
+000000r 2               LED_OUT = VIA1_ORA
+000000r 2               LED     = VIA_PA7
+000000r 2               
+000000r 1                                     .include "tools.inc65"
+000000r 2               .import delay_ms
+000000r 2               
+000000r 1               
+000000r 1                                     .export lcd_init
+000000r 1                                     .export lcd_command
+000000r 1                                     .export lcd_puts
+000000r 1                                     .export lcd_putc
+000000r 1                                     .export lcd_goto
+000000r 1                                     .export lcd_clear
+000000r 1                                     .export lcd_cursor_on
+000000r 1                                     .export lcd_cursor_blink
+000000r 1                                     .export lcd_cursor_off
+000000r 1               
+000000r 1                                     CMD_CLEARDISPLAY   = $01
+000000r 1                                     CMD_RETURNHOME     = $02
+000000r 1                                     CMD_ENTRYMODESET   = $04
+000000r 1                                     CMD_DISPLAYCONTROL = $08
+000000r 1                                     CMD_CURSORSHIFT    = $10
+000000r 1                                     CMD_FUNCTIONSET    = $20
+000000r 1                                     CMD_SETCGRAMADDR   = $40
+000000r 1                                     CMD_SETDDRAMADDR   = $80
+000000r 1               
+000000r 1                                     CTRL_CURSOR_DEC    = $00
+000000r 1                                     CTRL_CURSOR_INC    = $02
+000000r 1                                     CTRL_DISPLAY_FIXED = $00
+000000r 1                                     CTRL_DISPLAY_MOVE  = $01
+000000r 1                                     CTRL_DISPLAY_OFF   = $00
+000000r 1                                     CTRL_DISPLAY_ON    = $04
+000000r 1                                     CTRL_CURSOR_OFF    = $00
+000000r 1                                     CTRL_CURSOR_ON     = $02
+000000r 1                                     CTRL_CURSOR_BLINK  = $01
+000000r 1                                     CTRL_SHIFT_CURSOR  = $00
+000000r 1                                     CTRL_SHIFT_DISPLAY = $08
+000000r 1                                     CTRL_SHIFT_LEFT    = $00
+000000r 1                                     CTRL_SHIFT_RIGHT   = $04
+000000r 1                                     CTRL_4BIT          = $00
+000000r 1                                     CTRL_8BIT          = $10
+000000r 1                                     CTRL_LINES_1       = $00
+000000r 1                                     CTRL_LINES_2       = $08
+000000r 1                                     CTRL_FONT_5X7      = $00
+000000r 1                                     CTRL_FONT_5X10     = $04
+000000r 1               
+000000r 1                                     LCD_D4  = VIA_PA0
+000000r 1                                     LCD_D5  = VIA_PA1
+000000r 1                                     LCD_D6  = VIA_PA2
+000000r 1                                     LCD_D7  = VIA_PA3
+000000r 1                                     LCD_RS  = VIA_PA4
+000000r 1                                     LCD_EN1 = VIA_PA5
+000000r 1                                     LCD_EN2 = VIA_PA6
+000000r 1               
+000000r 1                                     .zeropage
+000000r 1               
+000000r 1  00           ENABLE_BITS:          .byte 0
+000001r 1  00           CURSOR:               .byte 0
+000002r 1  00           ROW:                  .byte 0
+000003r 1  00           COLUMN:               .byte 0
+000004r 1               
+000004r 1                                     .bss
+000000r 1               
+000000r 1  00 00 00 00  display_data:         .res 4 * 40, 0
+000004r 1  00 00 00 00  
+000008r 1  00 00 00 00  
+0000A0r 1               
+0000A0r 1                                     .code
+000000r 1               
+000000r 1               ; Initialize the LCD
+000000r 1               ; @mod TMP0
+000000r 1  85 rr 48 8A  lcd_init:             phaxy
+000004r 1  48 98 48 A5  
+000008r 1  rr           
+000009r 1               
+000009r 1                                     ; IO line setup
+000009r 1  A9 7F                              lda #<(LCD_D4 | LCD_D5 | LCD_D6 | LCD_D7 | LCD_EN1 | LCD_EN2 | LCD_RS)
+00000Br 1  8D 21 7F                           sta VIA1_ORA
+00000Er 1  8D 23 7F                           sta VIA1_DDRA
+000011r 1  A2 32                              ldx #50
+000013r 1  20 rr rr                           jsr delay_ms
+000016r 1               
+000016r 1  AD 21 7F                           lda VIA1_ORA
+000019r 1  29 8F                              and #<~(LCD_EN1 | LCD_EN2 | LCD_RS)
+00001Br 1  8D 21 7F                           sta VIA1_ORA
+00001Er 1               
+00001Er 1                                     ; Operate on both controllers
+00001Er 1  A9 60                              lda #<(LCD_EN1 | LCD_EN2)
+000020r 1  85 rr                              sta ENABLE_BITS
+000022r 1               
+000022r 1                                     ; Enable the 4 bit interface
+000022r 1  A9 03                              lda #$03
+000024r 1  20 rr rr                           jsr write_4bits
+000027r 1  A2 05                              ldx #5
+000029r 1  20 rr rr                           jsr delay_ms
+00002Cr 1  A9 03                              lda #$03
+00002Er 1  20 rr rr                           jsr write_4bits
+000031r 1  A2 01                              ldx #1
+000033r 1  20 rr rr                           jsr delay_ms
+000036r 1  A9 03                              lda #$03
+000038r 1  20 rr rr                           jsr write_4bits
+00003Br 1  A2 01                              ldx #1
+00003Dr 1  20 rr rr                           jsr delay_ms
+000040r 1  A9 02                              lda #$02
+000042r 1  20 rr rr                           jsr write_4bits
+000045r 1  A2 01                              ldx #1
+000047r 1  20 rr rr                           jsr delay_ms
+00004Ar 1               
+00004Ar 1                                     ; Initial diplay configuration
+00004Ar 1  A9 28                              lda #(CMD_FUNCTIONSET| CTRL_4BIT | CTRL_LINES_2 | CTRL_FONT_5X7)
+00004Cr 1  20 rr rr                           jsr command
+00004Fr 1  A9 08                              lda #(CMD_DISPLAYCONTROL | CTRL_DISPLAY_OFF)
+000051r 1  20 rr rr                           jsr command
+000054r 1  A9 0C                              lda #(CMD_DISPLAYCONTROL | CTRL_DISPLAY_ON | CTRL_CURSOR_OFF)
+000056r 1  20 rr rr                           jsr command
+000059r 1  A9 06                              lda #(CMD_ENTRYMODESET | CTRL_CURSOR_INC | CTRL_DISPLAY_FIXED)
+00005Br 1  20 rr rr                           jsr command
+00005Er 1  A9 01                              lda #CMD_CLEARDISPLAY
+000060r 1  20 rr rr                           jsr command
+000063r 1  A9 02                              lda #CMD_RETURNHOME
+000065r 1  20 rr rr                           jsr command
+000068r 1               
+000068r 1                                     ; Operate on first controller
+000068r 1  A9 20                              lda #<(LCD_EN1)
+00006Ar 1  85 rr                              sta ENABLE_BITS
+00006Cr 1               
+00006Cr 1  A9 00                              lda #0
+00006Er 1  85 rr                              sta ROW
+000070r 1  85 rr                              sta COLUMN
+000072r 1  85 rr                              sta CURSOR
+000074r 1               
+000074r 1  A9 20                              lda #' '
+000076r 1  A2 9F                              ldx #(4 * 40 - 1)
+000078r 1  9D rr rr     @clear_display_data:  sta display_data,x
+00007Br 1  CA                                 dex
+00007Cr 1  10 FA                              bpl @clear_display_data
+00007Er 1  68 A8 68 AA                        plaxy
+000082r 1  68           
+000083r 1  60                                 rts
+000084r 1               
+000084r 1               ; Send the command in A to the LCD
+000084r 1               ; @mod A, X, Y, TMP0
+000084r 1  AA           command:              tax
+000085r 1  AD 21 7F                           lda VIA1_ORA
+000088r 1  29 EF                              and #<~LCD_RS
+00008Ar 1  8D 21 7F                           sta VIA1_ORA
+00008Dr 1  8A                                 txa
+00008Er 1  4C rr rr                           jmp send
+000091r 1               
+000091r 1               ; Send the data in A to the LCD
+000091r 1               ; @mod A, X, Y, TMP0
+000091r 1  AA           write:                tax
+000092r 1  AD 21 7F                           lda VIA1_ORA
+000095r 1  09 10                              ora #<LCD_RS
+000097r 1  8D 21 7F                           sta VIA1_ORA
+00009Ar 1  8A                                 txa
+00009Br 1  4C rr rr                           jmp send
+00009Er 1               
+00009Er 1               ; Send the accu to the LCD
+00009Er 1               ; @mod A, X, Y, TMP0
+00009Er 1  A8           send:                 tay
+00009Fr 1  4A                                 lsr
+0000A0r 1  4A                                 lsr
+0000A1r 1  4A                                 lsr
+0000A2r 1  4A                                 lsr
+0000A3r 1  20 rr rr                           jsr write_4bits
+0000A6r 1  98                                 tya
+0000A7r 1  29 0F                              and #$0f
+0000A9r 1  20 rr rr                           jsr write_4bits
+0000ACr 1  60                                 rts
+0000ADr 1               
+0000ADr 1               ; Send A[0..3] to the LCD, assumes A[4..7] = 0
+0000ADr 1               ; @mod A, X, TMP0
+0000ADr 1  85 rr        write_4bits:          sta TMP0
+0000AFr 1  AD 21 7F                           lda VIA1_ORA
+0000B2r 1  29 F0                              and #$f0
+0000B4r 1  05 rr                              ora TMP0
+0000B6r 1  8D 21 7F                           sta VIA1_ORA
+0000B9r 1  20 rr rr                           jsr pulse_enable
+0000BCr 1  60                                 rts
+0000BDr 1               
+0000BDr 1               ; Send an enable pulse to the LCD
+0000BDr 1               ; @mod A, X
+0000BDr 1  A5 rr        pulse_enable:         lda ENABLE_BITS
+0000BFr 1  49 FF                              eor #$ff
+0000C1r 1  2D 21 7F                           and VIA1_ORA
+0000C4r 1  8D 21 7F                           sta VIA1_ORA
+0000C7r 1  A2 32                              ldx #50
+0000C9r 1  CA           @delay1:              dex
+0000CAr 1  D0 FD                              bne @delay1
+0000CCr 1  A5 rr                              lda ENABLE_BITS
+0000CEr 1  0D 21 7F                           ora VIA1_ORA
+0000D1r 1  8D 21 7F                           sta VIA1_ORA
+0000D4r 1  A2 C8                              ldx #200
+0000D6r 1  CA           @delay2:              dex
+0000D7r 1  D0 FD                              bne @delay2
+0000D9r 1  A5 rr                              lda ENABLE_BITS
+0000DBr 1  49 FF                              eor #$ff
+0000DDr 1  2D 21 7F                           and VIA1_ORA
+0000E0r 1  8D 21 7F                           sta VIA1_ORA
+0000E3r 1  A2 32                              ldx #50
+0000E5r 1  CA           @delay3:              dex
+0000E6r 1  D0 FD                              bne @delay3
+0000E8r 1  60                                 rts
+0000E9r 1               
+0000E9r 1               ; Send a command to the display
+0000E9r 1               ; @in A The command to send
+0000E9r 1  85 rr 48 8A  lcd_command:          phaxy
+0000EDr 1  48 98 48 A5  
+0000F1r 1  rr           
+0000F2r 1  20 rr rr                           jsr command
+0000F5r 1  68 A8 68 AA                        plaxy
+0000F9r 1  68           
+0000FAr 1  60                                 rts
+0000FBr 1               
+0000FBr 1               ; Print the character in A onto the LCD
+0000FBr 1  85 rr 48 8A  lcd_putc:             phaxy
+0000FFr 1  48 98 48 A5  
+000103r 1  rr           
+000104r 1  C9 0A                              cmp #$0a
+000106r 1  F0 09                              beq @newline
+000108r 1  20 rr rr                           jsr write
+00010Br 1  68 A8 68 AA                        plaxy
+00010Fr 1  68           
+000110r 1  60                                 rts
+000111r 1  A4 rr        @newline:             ldy ROW
+000113r 1  C0 03                              cpy #3
+000115r 1  F0 0C                              beq @scroll
+000117r 1  C8                                 iny
+000118r 1  A2 00                              ldx #0
+00011Ar 1  20 rr rr                           jsr lcd_goto
+00011Dr 1  68 A8 68 AA                        plaxy
+000121r 1  68           
+000122r 1  60                                 rts
+000123r 1  20 rr rr     @scroll:              jsr lcd_clear
+000126r 1  68 A8 68 AA                        plaxy
+00012Ar 1  68           
+00012Br 1  60                                 rts
+00012Cr 1               
+00012Cr 1               ; Print the zero terminated string pointed onto the LCD
+00012Cr 1  85 rr 48 8A  lcd_puts:             phaxy
+000130r 1  48 98 48 A5  
+000134r 1  rr           
+000135r 1  A0 00                              ldy #0
+000137r 1  84 rr        @next_char:           sty TMP1
+000139r 1  B1 rr                              lda (R0),y
+00013Br 1  F0 08                              beq @eos
+00013Dr 1  20 rr rr                           jsr lcd_putc
+000140r 1  A4 rr                              ldy TMP1
+000142r 1  C8                                 iny
+000143r 1  D0 F2                              bne @next_char
+000145r 1  68 A8 68 AA  @eos:                 plaxy
+000149r 1  68           
+00014Ar 1  60                                 rts
+00014Br 1               
+00014Br 1               ; Set the cursor the position X (column) and Y (row)
+00014Br 1               ; X must be in the range 0..39 and Y in 0..3
+00014Br 1  85 rr 48 8A  lcd_goto:             phaxy
+00014Fr 1  48 98 48 A5  
+000153r 1  rr           
+000154r 1  86 rr                              stx COLUMN
+000156r 1  84 rr                              sty ROW
+000158r 1  A9 0C                              lda #(CMD_DISPLAYCONTROL | CTRL_DISPLAY_ON | CTRL_CURSOR_OFF)
+00015Ar 1  20 rr rr                           jsr command
+00015Dr 1  A4 rr                              ldy ROW
+00015Fr 1  B9 rr rr                           lda row_enables,y
+000162r 1  85 rr                              sta ENABLE_BITS
+000164r 1  A5 rr                              lda COLUMN
+000166r 1  18                                 clc
+000167r 1  79 rr rr                           adc row_offsets,y
+00016Ar 1  69 80                              adc #CMD_SETDDRAMADDR
+00016Cr 1  20 rr rr                           jsr command
+00016Fr 1  A5 rr                              lda CURSOR
+000171r 1  09 0C                              ora #(CMD_DISPLAYCONTROL | CTRL_DISPLAY_ON)
+000173r 1  20 rr rr                           jsr command
+000176r 1  68 A8 68 AA                        plaxy
+00017Ar 1  68           
+00017Br 1  60                                 rts
+00017Cr 1               
+00017Cr 1  00 40 00 40  row_offsets:          .byte $00, $40, $00, $40
+000180r 1  20 20 40 40  row_enables:          .byte LCD_EN1, LCD_EN1, LCD_EN2, LCD_EN2
+000184r 1               
+000184r 1               ; Clear the display
+000184r 1  85 rr 48 8A  lcd_clear:            phaxy
+000188r 1  48 98 48 A5  
+00018Cr 1  rr           
+00018Dr 1  A9 60                              lda #<(LCD_EN1 | LCD_EN2)
+00018Fr 1  85 rr                              sta ENABLE_BITS
+000191r 1  A9 01                              lda #CMD_CLEARDISPLAY
+000193r 1  20 rr rr                           jsr command
+000196r 1  A2 00                              ldx #0
+000198r 1  A0 00                              ldy #0
+00019Ar 1  20 rr rr                           jsr lcd_goto
+00019Dr 1  A9 01                              lda #CMD_CLEARDISPLAY
+00019Fr 1  20 rr rr                           jsr command
+0001A2r 1  68 A8 68 AA                        plaxy
+0001A6r 1  68           
+0001A7r 1               
+0001A7r 1               ; Show the cursor
+0001A7r 1  85 rr 48 8A  lcd_cursor_on:        phaxy
+0001ABr 1  48 98 48 A5  
+0001AFr 1  rr           
+0001B0r 1  A9 02                              lda #CTRL_CURSOR_ON
+0001B2r 1  85 rr                              sta CURSOR
+0001B4r 1  09 0C                              ora #(CMD_DISPLAYCONTROL| CTRL_DISPLAY_ON)
+0001B6r 1  20 rr rr                           jsr command
+0001B9r 1  68 A8 68 AA                        plaxy
+0001BDr 1  68           
+0001BEr 1  60                                 rts
+0001BFr 1               
+0001BFr 1               ; Show a blinking cursor
+0001BFr 1  85 rr 48 8A  lcd_cursor_blink:     phaxy
+0001C3r 1  48 98 48 A5  
+0001C7r 1  rr           
+0001C8r 1  A9 03                              lda #(CTRL_CURSOR_ON | CTRL_CURSOR_BLINK)
+0001CAr 1  85 rr                              sta CURSOR
+0001CCr 1  09 0C                              ora #(CMD_DISPLAYCONTROL| CTRL_DISPLAY_ON)
+0001CEr 1  20 rr rr                           jsr command
+0001D1r 1  68 A8 68 AA                        plaxy
+0001D5r 1  68           
+0001D6r 1  60                                 rts
+0001D7r 1               
+0001D7r 1               ; Hide the cursor
+0001D7r 1  85 rr 48 8A  lcd_cursor_off:       phaxy
+0001DBr 1  48 98 48 A5  
+0001DFr 1  rr           
+0001E0r 1  A9 00                              lda #CTRL_CURSOR_OFF
+0001E2r 1  85 rr                              sta CURSOR
+0001E4r 1  09 0C                              ora #(CMD_DISPLAYCONTROL| CTRL_DISPLAY_ON)
+0001E6r 1  20 rr rr                           jsr command
+0001E9r 1  68 A8 68 AA                        plaxy
+0001EDr 1  68           
+0001EEr 1  60                                 rts
+0001EEr 1               

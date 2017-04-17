@@ -1,0 +1,43 @@
+ca65 V2.15 - Git f7cdfbf
+Main file   : tools.s65
+Current file: tools.s65
+
+000000r 1                           .setcpu "6502"
+000000r 1               
+000000r 1                           .export delay_ms
+000000r 1               
+000000r 1                           .code
+000000r 1               
+000000r 1                           ;.align 256
+000000r 1               
+000000r 1               ; Delay the number of miliseconds specified by X
+000000r 1               ; This is hardcoded for a 1 MHz system clock
+000000r 1               ; @in X The delay in ms
+000000r 1  48           delay_ms:   pha         ; 3
+000001r 1  8A                       txa         ; 2
+000002r 1  48                       pha         ; 3
+000003r 1  98                       tya         ; 2
+000004r 1  48                       pha         ; 3
+000005r 1               
+000005r 1  A4 00                    ldy $00     ; 3 (dummy operation)
+000007r 1  A0 BE                    ldy #190    ; 2
+000009r 1  88           @loop1:     dey         ; 190 * 2
+00000Ar 1  D0 FD                    bne @loop1  ; 190 * 3 - 1
+00000Cr 1               
+00000Cr 1  CA           @loop2:     dex         ; 2
+00000Dr 1  F0 09                    beq @return ; (x - 1) * 2 + 3
+00000Fr 1               
+00000Fr 1  EA                       nop         ; 2
+000010r 1  A0 C6                    ldy #198    ; 2
+000012r 1  88           @loop3:     dey         ; 198 * 2
+000013r 1  D0 FD                    bne @loop3  ; 198 * 3 - 1
+000015r 1               
+000015r 1  4C rr rr                 jmp @loop2  ; 3
+000018r 1               
+000018r 1  68           @return:    pla         ; 4
+000019r 1  A8                       tay         ; 2
+00001Ar 1  68                       pla         ; 4
+00001Br 1  AA                       tax         ; 2
+00001Cr 1  68                       pla         ; 4
+00001Dr 1  60                       rts         ; 6 (+ 6 for JSR)
+00001Dr 1               

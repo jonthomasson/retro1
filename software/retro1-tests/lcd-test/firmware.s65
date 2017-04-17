@@ -1,0 +1,292 @@
+                .setcpu "65c02"
+                .include "macros.inc65"
+              
+                .include "io.inc65"
+
+                .segment "VECTORS"
+
+          .word   nmi
+          .word   reset
+          .word   irq
+
+          .code
+
+reset:				jmp main
+
+nmi:					rti
+
+irq:					rti
+
+main:
+
+                      jmp lcd_init2
+                      
+                      
+                      
+                      
+loop:
+                
+                jmp loop
+lcd_init2:       
+                lda #$ff
+                sta VIA2_ORA
+                sta VIA2_DDRA
+                ldx #50
+                jsr delay_ms
+                 
+                ;set register select bit to 0 for command/control
+                
+                ;start init sequence
+                lda #$03
+                jsr strobe_enable
+                ldx #5
+                jsr delay_ms
+                
+                lda #$03
+                jsr strobe_enable
+                ldx #5
+                jsr delay_ms
+                
+                lda #$03
+                jsr strobe_enable
+                ldx #5
+                jsr delay_ms
+                
+                lda #$02
+                jsr strobe_enable
+                ldx #3
+                jsr delay_ms
+                
+                ;now in 4 bit mode
+                
+                ;function set
+                lda #$02 ;set data length to 4 bits
+                jsr strobe_enable
+                
+                
+                ;no delay needed here
+                
+                
+                lda #$08 ;2 lines 5x8 pixels
+                jsr strobe_enable
+                ldx #3
+                jsr delay_ms
+                
+                lda #$00 ;turn display off
+                jsr strobe_enable
+                lda #$08 
+                jsr strobe_enable
+                ldx #3
+                jsr delay_ms
+                
+                lda #$00 ;clear display
+                jsr strobe_enable
+                lda #$01
+                jsr strobe_enable
+                ldx #3
+                jsr delay_ms
+                
+                lda #$00 ;entry mode set
+                jsr strobe_enable
+                lda #$06
+                jsr strobe_enable
+                ldx #3
+                jsr delay_ms
+                ;end of initialization
+                
+                lda #$00 ;turn display on
+                jsr strobe_enable
+                lda #$0f ;display on, cursor on, blink on
+                jsr strobe_enable
+                ldx #3
+                jsr delay_ms
+                
+                lda #$00 ;CURSOR HOME
+                jsr strobe_enable
+                lda #$02 ;cursor home
+                jsr strobe_enable
+                ldx #3
+                jsr delay_ms
+                
+                jmp write_hello_world
+                
+write_hello_world:
+                 ;send H
+                lda #$14
+                jsr strobe_enable
+                ldx #5
+                jsr delay_ms
+                
+                lda #$18
+                jsr strobe_enable
+                ldx #5
+                jsr delay_ms
+                
+                ;send E
+                lda #$14
+                jsr strobe_enable
+                ldx #5
+                jsr delay_ms
+                
+                lda #$15
+                jsr strobe_enable
+                ldx #5
+                jsr delay_ms
+                
+                ;add in extra strobe for reading 8 status bits
+                lda #00
+                jsr strobe_enable
+                lda #00
+                jsr strobe_enable
+                
+                ;send L
+                lda #$14
+                jsr strobe_enable
+                ldx #5
+                jsr delay_ms
+                
+                lda #$1C
+                jsr strobe_enable
+                ldx #5
+                jsr delay_ms
+                
+                ;send L
+                lda #$14
+                jsr strobe_enable
+                ldx #5
+                jsr delay_ms
+                
+                lda #$1C
+                jsr strobe_enable
+                ldx #5
+                jsr delay_ms
+                
+                ;send O
+                lda #$14
+                jsr strobe_enable
+                ldx #5
+                jsr delay_ms
+                
+                lda #$1F
+                jsr strobe_enable
+                ldx #5
+                jsr delay_ms
+                
+                ;send space
+                lda #$12
+                jsr strobe_enable
+                ldx #5
+                jsr delay_ms
+                
+                lda #$10
+                jsr strobe_enable
+                ldx #5
+                jsr delay_ms
+                
+                ;send W
+                lda #$15
+                jsr strobe_enable
+                ldx #5
+                jsr delay_ms
+                
+                lda #$17
+                jsr strobe_enable
+                ldx #5
+                jsr delay_ms
+                
+                ;send O
+                lda #$14
+                jsr strobe_enable
+                ldx #5
+                jsr delay_ms
+                
+                lda #$1F
+                jsr strobe_enable
+                ldx #5
+                jsr delay_ms
+                
+                ;send R
+                lda #$15
+                jsr strobe_enable
+                ldx #5
+                jsr delay_ms
+                
+                lda #$12
+                jsr strobe_enable
+                ldx #5
+                jsr delay_ms
+                
+                ;send L
+                lda #$14
+                jsr strobe_enable
+                ldx #5
+                jsr delay_ms
+                
+                lda #$1C
+                jsr strobe_enable
+                ldx #5
+                jsr delay_ms
+                
+                ;send D
+                lda #$14
+                jsr strobe_enable
+                ldx #5
+                jsr delay_ms
+                
+                lda #$14
+                jsr strobe_enable
+                ldx #5
+                jsr delay_ms
+                
+                ;send !
+                lda #$12
+                jsr strobe_enable
+                ldx #5
+                jsr delay_ms
+                
+                lda #$11
+                jsr strobe_enable
+                ldx #5
+                jsr delay_ms
+                
+                jmp loop
+                
+strobe_enable: 
+                ora #$20        ;add enable bit
+                sta VIA2_ORA    ;send value out to via
+                ldx #10
+                jsr delay_ms
+                and #$DF        ;mask to take out enable
+                sta VIA2_ORA    ;take out enable bit and send to via
+               
+                rts
+                
+; Delay the number of miliseconds specified by X
+; This is hardcoded for a 1 MHz system clock
+delay_ms:   pha       ; 3
+            txa       ; 2
+            pha       ; 3
+            tya       ; 2
+            pha       ; 3
+
+            ldy $00     ; 3 (dummy operation)
+            ldy #190    ; 2
+@loop1:     dey       ; 190 * 2
+            bne @loop1    ; 190 * 3 - 1
+
+@loop2:     dex       ; 2
+            beq @return   ; (x - 1) * 2 + 3
+
+            nop       ; 2
+            ldy #198    ; 2
+@loop3:     dey       ; 198 * 2
+            bne @loop3    ; 198 * 3 - 1
+
+            jmp @loop2    ; 3
+
+@return:    pla       ; 4
+            tay       ; 2
+            pla       ; 4
+            tax       ; 2
+            pla       ; 4
+            rts       ; 6 (+ 6 for JSR)

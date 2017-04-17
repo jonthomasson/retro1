@@ -1,0 +1,157 @@
+                .setcpu "6502"
+                .include "zeropage.inc65"
+                .include "io.inc65"
+                .include "macros.inc65"
+                .include "acia.inc65"
+
+                .export rtc_init
+                .export rtc_test
+
+                .code
+
+; Initialize the RTC
+;the RTC should only need this code run once for a new chip
+rtc_init:       ;LDX #$0a    ; control register A. turn on oscillator.
+                ;LDA #$20    ; %x010xxxx
+                
+                LDX #$0a    ; control register A. turn on oscillator.
+                LDA #$23    ; %x010xxxx
+                
+                STX RTC_BASE
+                STA RTC_AS
+                
+                LDX #$0B
+                LDA #$80 ;write 1 to UTI bit  to prevent t
+                
+                STX RTC_BASE
+                STA RTC_AS
+                
+                LDX #$0B
+                LDA #$8c ;write 1 to UTI bit  to prevent transfers between RTC bytes and user buffer. square wave enabled. Binary coded decimal. 12 hour time.
+                
+                STX RTC_BASE
+                STA RTC_AS
+                
+                LDX #$00 ;seconds
+                LDA #$00 
+                
+                STX RTC_BASE
+                STA RTC_AS
+                
+                LDX #$01 ;seconds alarm
+                LDA #$00 
+                
+                STX RTC_BASE
+                STA RTC_AS
+                
+                LDX #$02 ;minutes
+                LDA #$10 
+                
+                STX RTC_BASE
+                STA RTC_AS
+                
+                LDX #$03 ;minutes alarm
+                LDA #$00 
+                
+                STX RTC_BASE
+                STA RTC_AS
+                
+                LDX #$04 ;hour
+                LDA #$05 
+                
+                STX RTC_BASE
+                STA RTC_AS
+                
+                LDX #$05 ;hour alarm
+                LDA #$01 
+                
+                STX RTC_BASE
+                STA RTC_AS
+                
+                LDX #$06 ;day of week
+                LDA #$02 ;Monday 
+                
+                STX RTC_BASE
+                STA RTC_AS
+                
+                LDX #$07 ;day of month
+                LDA #$21  
+                
+                STX RTC_BASE
+                STA RTC_AS
+                
+                LDX #$08 ;month
+                LDA #$03  ;march
+                
+                STX RTC_BASE
+                STA RTC_AS
+                
+                LDX #$09 ;year
+                LDA #$13  ;2016
+                
+                STX RTC_BASE
+                STA RTC_AS
+                
+                ;now Clear the UTI bit to allow update transfers
+                LDX #$0B
+                LDA #$0c
+                
+                STX RTC_BASE
+                STA RTC_AS
+                
+                RTS
+
+rtc_test:       
+                LDA #$09 ; register 9 - year
+                STA RTC_BASE    ; address register
+                LDA RTC_AS    ; data register
+                
+                jsr acia_putc
+                
+                jsr print_month
+                
+                rts
+
+print_month:    LDA #$08 ; register 8 - month
+                STA RTC_BASE    ; address register
+                LDA RTC_AS    ; data register
+                
+                      cmp #01
+                      bne @not_january
+                      ld16 R0, msg_january
+                      jsr acia_puts
+                      rts
+                      
+@not_january:             
+                      
+                      cmp #02
+                      bne @not_february
+                      ld16 R0, msg_february
+                      jsr acia_puts
+                      rts
+@not_february:             
+                      cmp #03
+                      bne @not_march
+                      ld16 R0, msg_march
+                      jsr acia_puts
+                      rts
+                      
+@not_march:           cmp #04
+                      bne @not_april
+                      ld16 R0, msg_april
+                      jsr acia_puts
+                      rts
+                      
+@not_april:           ld16 R0, msg_unknown
+                      jsr acia_puts
+                        rts
+                      
+msg_january:               .byte $0d, $0a, "January ", $00
+
+msg_february:               .byte $0d, $0a, "February ", $00
+
+msg_march:               .byte $0d, $0a, "March ", $00
+
+msg_april:               .byte $0d, $0a, "April ", $00
+
+msg_unknown:               .byte $0d, $0a, "Unknown ", $00

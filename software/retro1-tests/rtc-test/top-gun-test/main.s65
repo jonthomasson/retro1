@@ -1,0 +1,140 @@
+                .setcpu "6502"
+
+                .include "macros.inc65"
+                .include "zeropage.inc65"
+                .include "acia.inc65"
+                .include "string.inc65"
+                .include "tools.inc65"
+                .include "io.inc65"
+                .include "sid.inc65"
+                ;.include "lcd.inc65"
+                ;.include "keys.inc65"
+
+                .segment "VECTORS"
+
+                .word   nmi
+                .word   reset
+                .word   irq
+
+                .bss
+
+                BUFFER_LENGTH = 80
+buffer:         .res BUFFER_LENGTH + 1, 0
+
+                .code
+
+reset:          jmp main
+
+nmi:            rti
+
+irq:            rti
+
+main:           cld
+                ldx #$ff
+                txs
+
+                jsr acia_init
+                jsr sid_init
+
+                ;ld16 R0, msg_welcome
+                ;jsr acia_puts
+
+                jmp play_tune
+                
+;y = current sid address index
+;x = current data address index
+;set y to 0
+;loop until y = 25
+;read a byte in at x address index
+;send byte to sid y address
+;increment y
+;increment x
+;if y >=25 then set y = 0
+;pause program execution to 50hz.
+play_tune:     
+pagectr = $02
+zpptr = $00 
+	
+	LDA #$80 ;num pages to clear
+	LDX #$00 ;lsb start
+	LDY #$D0 ;msb start
+	
+         STA pagectr           ;set pages to clear (1-255, 0 = 256)
+         stx zpptr             ;set start address LSB
+         sty zpptr+1           ;set start address MSB
+         lda #$00              ;clear value -- could be anything
+         ldy #ff                ;index
+send_next:       jsr next_byte
+                sta SID_VOICE1_FREQ_L
+                jsr next_byte
+                sta SID_VOICE1_FREQ_H
+                jsr next_byte
+                sta SID_VOICE1_PW_L
+                jsr next_byte
+                sta SID_VOICE1_PW_H
+                jsr next_byte
+                sta SID_VOICE1_CTRL
+                jsr next_byte
+                sta SID_VOICE1_AD
+                jsr next_byte
+                sta SID_VOICE1_SR
+                jsr next_byte
+                sta SID_VOICE2_FREQ_L
+                jsr next_byte
+                sta SID_VOICE2_FREQ_H
+                jsr next_byte
+                sta SID_VOICE2_PW_L
+                jsr next_byte
+                sta SID_VOICE2_PW_H
+                jsr next_byte
+                sta SID_VOICE2_CTRL
+                jsr next_byte
+                sta SID_VOICE2_AD
+                jsr next_byte
+                sta SID_VOICE2_SR
+                jsr next_byte
+                sta SID_VOICE3_FREQ_L
+                jsr next_byte
+                sta SID_VOICE3_FREQ_H
+                jsr next_byte
+                sta SID_VOICE3_PW_L
+                jsr next_byte
+                sta SID_VOICE3_PW_H
+                jsr next_byte
+                sta SID_VOICE3_CTRL
+                jsr next_byte
+                sta SID_VOICE3_AD
+                jsr next_byte
+                sta SID_VOICE3_SR
+                jsr next_byte
+                sta SID_FC_L
+                jsr next_byte
+                sta SID_FC_H 
+                jsr next_byte
+                sta SID_RES_FILT
+                jsr next_byte
+                sta SID_MODE_VOLUME
+                
+                ldx #$14
+                jsr delay_ms
+                
+                jmp send_next
+                ;jsr store_sid
+                ;bne send_next
+                
+               
+                
+                ;play
+                ;rts
+                
+next_byte:       iny
+                lda (zpptr), y
+                rts
+
+
+msg_welcome:    .byte "Welcome to the 6502 computer system!", $0d, $0a
+                .byte "Press P to play a tune.", $0d, $0a
+
+.segment "MUSIC"
+song:
+.incbin "Top_Gun_Anthem.dmp"

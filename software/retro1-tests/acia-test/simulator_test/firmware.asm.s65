@@ -1,0 +1,37 @@
+					;.setcpu "65C02"
+
+					;ACIA_DATA = $A000
+					;ACIA_STATUS = $A001
+					;ACIA_COMMAND = $A002
+					;ACIA_CONTROL = $A003
+	
+IO_AREA	= $F000		; set I/O area for this monitor
+
+ACIAsimwr	= IO_AREA+$01	; simulated ACIA write port
+ACIAsimrd	= IO_AREA+$04	; simulated ACIA read port
+
+	*=	$C000
+main
+init_acia			
+
+write				ldx #0	;for x = 0 to length of message, send character to acia
+next_char
+wait_txd_empty	
+					lda text,x
+					beq write
+					sta ACIAsimwr
+					inx
+                                        ;jsr DELAY_6551
+					jmp next_char
+
+
+text				.byte "Hello World!", $0d, $0a, $00
+
+
+; system vectors
+
+	*=	$FFFA
+
+	.word	main		; NMI vector
+	.word	main		; RESET vector
+	.word	main		; IRQ vector

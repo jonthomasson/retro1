@@ -1,0 +1,22 @@
+ca65 V2.15 - Git f7cdfbf
+Main file   : zeropage.s65
+Current file: zeropage.s65
+
+000000r 1                             .setcpu "6502"
+000000r 1               
+000000r 1                             .exportzp RES
+000000r 1                             .exportzp R0
+000000r 1                             .exportzp R1
+000000r 1                             .exportzp TMP0
+000000r 1                             .exportzp TMP1
+000000r 1                             .exportzp TMP_STACK
+000000r 1               
+000000r 1                             .zeropage
+000000r 1               
+000000r 1  00 00        RES:          .word 0
+000002r 1  00 00        R0:           .word 0
+000004r 1  00 00        R1:           .word 0
+000006r 1  00 00        TMP0:         .word 0
+000008r 1  00 00        TMP1:         .word 0
+00000Ar 1  00           TMP_STACK:    .byte 0
+00000Ar 1               

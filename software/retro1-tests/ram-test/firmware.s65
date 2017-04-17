@@ -1,0 +1,13 @@
+          .setcpu "65C02"
+
+          .segment "VECTORS"
+          
+          .code
+
+LDX #$FF
+STX $3000     ;$3000 = #$FF
+
+main: LDX $3000
+DEX
+STX $3000
+JMP main

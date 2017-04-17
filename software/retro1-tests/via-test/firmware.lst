@@ -1,0 +1,52 @@
+ca65 V2.15 - Git a85ac88
+Main file   : firmware.s65
+Current file: firmware.s65
+
+000000r 1                         .setcpu "65C02"
+000000r 1               
+000000r 1                         VIA1_DDRB = $8022
+000000r 1                         VIA1_ORB  = $8020
+000000r 1                         VIA1_DDRA = $8023
+000000r 1                         VIA1_ORA  = $8021
+000000r 1                         VIA2_DDRB = $8122
+000000r 1                         VIA2_ORB  = $8120
+000000r 1                         VIA2_DDRA = $8123
+000000r 1                         VIA2_ORA  = $8121
+000000r 1               
+000000r 1               
+000000r 1                         .segment "VECTORS"
+000000r 1               
+000000r 1  rr rr                  .word   nmi
+000002r 1  rr rr                  .word   reset
+000004r 1  rr rr                  .word   irq
+000006r 1               
+000006r 1                         .code
+000000r 1               
+000000r 1  4C rr rr     reset:    jmp main
+000003r 1               
+000003r 1  40           nmi:      rti
+000004r 1               
+000004r 1  40           irq:      rti
+000005r 1               
+000005r 1  A9 FF        main:     lda #$ff
+000007r 1  8D 22 80               sta VIA1_DDRB
+00000Ar 1  8D 22 81               sta VIA2_DDRB
+00000Dr 1               
+00000Dr 1  A9 01        loop:     lda #$01
+00000Fr 1  8D 20 80               sta VIA1_ORB
+000012r 1  8D 20 81               sta VIA2_ORB
+000015r 1  20 rr rr               jsr delay
+000018r 1  A9 02                  lda #$02
+00001Ar 1  8D 20 80               sta VIA1_ORB
+00001Dr 1  8D 20 81               sta VIA2_ORB
+000020r 1  20 rr rr               jsr delay
+000023r 1  4C rr rr               jmp loop
+000026r 1               
+000026r 1  A2 C8        delay:    ldx #200
+000028r 1  A0 00        @delay2:  ldy #0
+00002Ar 1  88           @delay1:  dey
+00002Br 1  D0 FD                  bne @delay1
+00002Dr 1  CA                     dex
+00002Er 1  D0 F8                  bne @delay2
+000030r 1  60                     rts
+000030r 1               
