@@ -1,3 +1,4 @@
+
 # retro1
 A 6502 computer inspired by the Apple 1.
 
@@ -8,3 +9,4 @@ Although this was my first computer design, I had a few design rules that I want
 For software I developed test scripts as I went to aid in the testing of new components. I guess this approach is similar to test driven development. This made it somewhat easy to see if modifying a circuit broke any piece of tested functionality. The finished rom has the Apple II monitor, Micro Chess, a SID synth program (taken from the Dirk Grappendorf project), a program for setting the rtc circuitry with the date/time as well as invoke the square wave output of the rtc, and a buggy version of Apple II BASIC. I say buggy version of BASIC because it's only able to run simple commands like PRINT without throwing errors. I've attempted to follow the error down the stack, but I wasn't able to figure out what I was doing wrong.
 
 Overall I think I met my initial goals for this project. I learned a ton and had a lot of fun with it. It whet my appetite for future projects. I'm by no means an expert now, having completed the build, but I at least feel more comfortable with digital logic and computer architecture than I was before embarking on this adventure. I hope that someone may find this journey useful.
+![enter image description here](https://lh3.googleusercontent.com/4fvI7qCEhp9joYRRoIz2LV9YGknM920TqOJJiFKPkErq3X7zceZmHHqy3kByDF8Qo-nkRZNrr-Y1DaXdyIaLEZvabIKSQ-G9j7HtTfLUQjqGzk3bU9n25_7teqE4KfzvvT83W4A_y2kFh1wmFlOPVLVL8wsaW-ZlU_1h0Gqe1dLiTbmeqgmm4SF1bdcx8i8fvvx1AztS6rMeBecnVCMeehWTjtlpjXQeMoasFk8Kgkdo9oZUjIdB_9iiY-8DM1Hle4_dpfnK1AFmoYqTzpP93v5HmOk7j22lYq2DbB5ceo-fHyv8UxUGUIOIo3Y-k6C0L8uY8IvXx0PdmuloBS5S6FVjHBQ-XCAHKsLhOzxsibndpxGxCe6f4NOS3ECJD1GUB50Pkeo74woCotliKZttoVJq1eofJ-t612dkWHI2dIvQFjVXrygypCQd4OZUJheUajskHCBFd_KfbksLUHutme7oSXz4WUphwES90O3X0RjeYfXCl7aju42zixwWADIkDyvmjJgEGQrcQgfL5VXYP1Hx7oAOTb0fGWIm_fxi5iCgM7bVz2a0SIgHZ7oWVw_Bb-isqNDgIV96Hy-acAxHKuGrByeO_gU73rBheSOR=w1223-h688-no)
