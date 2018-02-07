@@ -1,4 +1,5 @@
 
+
 # retro1
 A 6502 computer inspired by the Apple 1.
 
@@ -10,3 +11,4 @@ For software I developed test scripts as I went to aid in the testing of new com
 
 Overall I think I met my initial goals for this project. I learned a ton and had a lot of fun with it. It whet my appetite for future projects. I'm by no means an expert now, having completed the build, but I at least feel more comfortable with digital logic and computer architecture than I was before embarking on this adventure. I hope that someone may find this journey useful.
 ![enter image description here](https://lh3.googleusercontent.com/fglWtAJCevHwNHitfqwmh59DB7SCrmaY4Cde7DSnNZGUuWjSP1T_K4Sza81S8SkwDSR8f0cAsCZcXrHBxVfq7lEVa40fMF0jiuMtJqIvsIB2mTvOLm1gEZugCN2shx14FbcY2ICCn9GYni_Hr3OoCRJ3NOJNTxIuLEaRnTQdclNc5-4JmCeOSQDs5hj3_pFUKfmkMMD3RZiOb4AY4mAprEhdzLCM-OcGjCZ7LJ_U_UnW8B_6idliqK8M6GhG17WzaAKzX5WCYocFs9tQVj3prhMANBtD1q44_VC0PiqtTZwKPRHGvf3pS4i0vqBa5gGyxCSleta0akQDUbZ26vVzgN29EoRZqXbwIowJuD4dpYhbpNwrGQKOvZG10akbij0dUr_k_47sVvovlghGmz1eDEvNSYMJ7_vnUanjaknb8TAluUBUwwbXXYEOKqsA5p-iqbBp2RSjtZfItw-o61QujH6Z5fookMK4FzQu3joGYjcQgik6-g3tV017gighvtXwkUjbqdavWAG44vPoDuq7uQf8YDcWi8nXSl8oulNP1lsnQUAVJCpLr327_fhAIpzRiy3U48-azrM80l-8SI9SRaN4skLesd__WpcA2H90=w1688-h949-no)
+![enter image description here](https://lh3.googleusercontent.com/QYqx29z2ymyEWxP5m5uKgNd9Pa6mb7tNoMsc7oYq2Ut0TmxsU7dmUhDBmqKuHvHBYXxI9zO1PFYy1nu2mCsevmKC3gORMFsfGXysLRs9zVNUyr0s0FJnZi4j0Udug8q6yaQrdhmXk3QJ9_tqXPRxoHP9WNgtqpQAlMe_dBgFVIfwTGDDCeTwBzzgiwrvfR88nAdLAQ4-y25hKn4TfD8rXsVq1a2xxI0Id7E4VsfZQ3tN5YmXVZiNZAvSt6PLiYckGK7UFSMGdzr-E_di0D0Uo7xzA6c2TorTx3M2vlX1RpKPV2DsBcJGprVH6lnGokstKRa5GP217JrhYurn79hEbUm9x18iPsnyDxzInUW21zWw9u0ExczKfQzWu_1LAH4bpiB6Vxduij-LyXyE4O9N-msowIa_P7IDBZjAU76E53f0r80ieQ6I1trgZ9EtsZyzM0ppxwFWNtqGGn_WT3clt0u6kuVGezsbDYdQdiSQTUHa-oSL8hdTwatpJyNoCosWKh2sbOtvYXGuNMh-RQZxDYHLHnvrbYrYajidoalFqE6OQQTAaI8-LGlqrowyx-N-mcE_WUjxVjkkSlrhV25zEWCaVsaOF8PETNkrOGIB=w1688-h949-no)
